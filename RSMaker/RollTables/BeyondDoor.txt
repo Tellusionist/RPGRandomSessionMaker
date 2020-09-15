@@ -1,0 +1,21 @@
+Value	Chamber	Stair
+Passage extending 10 ft., then T intersection extending 10 ft. to the right and left	FALSE	FALSE
+Passage extending 10 ft., then T intersection extending 10 ft. to the right and left	FALSE	FALSE
+Passage 20 ft. straight ahead	FALSE	FALSE
+Passage 20 ft. straight ahead	FALSE	FALSE
+Passage 20 ft. straight ahead	FALSE	FALSE
+Passage 20 ft. straight ahead	FALSE	FALSE
+Passage 20 ft. straight ahead	FALSE	FALSE
+Passage 20 ft. straight ahead	FALSE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Chamber (roll on the Chamber table)	TRUE	FALSE
+Stairs* (roll on the Stairs table, or chamber if you don't want multi-level)	FALSE	TRUE
+False door with trap	FALSE	FALSE

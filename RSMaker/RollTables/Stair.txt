@@ -1,0 +1,21 @@
+Value
+Down one level to a chamber
+Down one level to a chamber
+Down one level to a chamber
+Down one level to a chamber
+Down one level to a passage 20ft. Long
+Down one level to a passage 20ft. Long
+Down one level to a passage 20ft. Long
+Down one level to a passage 20ft. Long
+Down two levels to a chamber
+Down two levels to a passage 20ft. Long
+Down three levels to a chamber
+Down three levels to a passage 20ft. Long
+Up one level to a chamber
+Up one level to a passage 20ft. Long
+Up to a dead end
+Down to a dead end
+Chimney up one level to a passage 20ft. Long
+Chimney up two levels to a passage 20ft. Long
+Shaft (with or without elevator) down one level to a chamber
+Shaft (with or without elevator) up one level to a chamber and down one level to a chamber

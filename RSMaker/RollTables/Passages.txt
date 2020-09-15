@@ -1,0 +1,20 @@
+Value   Chamber Stair
+Continue straight 30ft., no doors or side passages	FALSE	FALSE
+Continue straight 30ft., no doors or side passages	FALSE	FALSE
+Continue straight 20ft., door to the right, then an additional 10 ft. ahead	FALSE	FALSE
+Continue straight 20ft., door to the left, then an additional 10 ft. ahead	FALSE	FALSE
+Continue straight 20ft.; passage ends in a door	FALSE	FALSE
+Continue straight 20ft., side passage to the right, then an additional 10 ft. ahead	FALSE	FALSE
+Continue straight 20ft., side passage to the right, then an additional 10 ft. ahead	FALSE	FALSE
+Continue straight 20ft., side passage to the left, then an additional 10 ft. ahead	FALSE	FALSE
+Continue straight 20ft., side passage to the left, then an additional 10 ft. ahead	FALSE	FALSE
+Continue straight 20ft., comes to a dead end; 10 percent chance of a secret door	FALSE	FALSE
+Continue straight 20ft., then the passage turns left and continues 10 ft.	FALSE	FALSE
+Continue straight 20ft., then the passage turns left and continues 10 ft.	FALSE	FALSE
+Continue straight 20ft., then the passage turns right and continues 10ft.	FALSE	FALSE
+Continue straight 20ft., then the passage turns right and continues 10ft.	FALSE	FALSE
+Chamber TRUE	FALSE
+Chamber TRUE	FALSE
+Chamber TRUE	FALSE
+Chamber TRUE	FALSE
+Stairs  FALSE	TRUE

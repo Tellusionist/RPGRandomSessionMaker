@@ -1,0 +1,13 @@
+Value
+Arctic
+Costal
+Desert
+Forest
+Grassland
+Hill
+Jungle
+Mountain
+Swamp
+Underdark
+Underwater
+Urban

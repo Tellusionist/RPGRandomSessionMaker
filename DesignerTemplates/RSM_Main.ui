@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>RPG Random Session Maker</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="lbl_Header">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>261</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Welcome to the RPG Random Session Maker!</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_rr_all">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>440</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Generate Starting Area</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_Type">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>70</y>
+      <width>31</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Type:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_Type">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>70</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>First Type</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Second Type</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QCheckBox" name="lck_type">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>70</y>
+      <width>16</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_Locked">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>50</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Locked</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_Environment">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>100</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Environment:</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="lck_Environment">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>100</y>
+      <width>16</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_Environment">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>100</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>First Env</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Second Env</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="lbl_StartArea">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>130</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Starting Area:</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="lck_StartArea">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>130</y>
+      <width>16</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="txt_StartArea">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>130</y>
+      <width>461</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_rr_type">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Re-Roll</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_rr_environment">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Re-Roll</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_rr_StartArea">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Re-Roll</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew"/>
+    <addaction name="actionLoad"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionPreferences"/>
+    <addaction name="actionRoll_Tables"/>
+   </widget>
+   <widget class="QMenu" name="menuGenerators">
+    <property name="title">
+     <string>Generators</string>
+    </property>
+    <addaction name="actionChamber"/>
+    <addaction name="actionPassage"/>
+    <addaction name="actionDoor"/>
+    <addaction name="actionEntrance"/>
+    <addaction name="separator"/>
+    <addaction name="actionMonster"/>
+    <addaction name="actionNPC"/>
+    <addaction name="actionPlayer"/>
+    <addaction name="separator"/>
+    <addaction name="actionCity"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuGenerators"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionLoad">
+   <property name="text">
+    <string>Load</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionChamber">
+   <property name="text">
+    <string>Chamber</string>
+   </property>
+  </action>
+  <action name="actionPassage">
+   <property name="text">
+    <string>Passage</string>
+   </property>
+  </action>
+  <action name="actionDoor">
+   <property name="text">
+    <string>Door</string>
+   </property>
+  </action>
+  <action name="actionEntrance">
+   <property name="text">
+    <string>Entrance</string>
+   </property>
+  </action>
+  <action name="actionMonster">
+   <property name="text">
+    <string>Monster</string>
+   </property>
+  </action>
+  <action name="actionNPC">
+   <property name="text">
+    <string>NPC</string>
+   </property>
+  </action>
+  <action name="actionPlayer">
+   <property name="text">
+    <string>Player</string>
+   </property>
+  </action>
+  <action name="actionCity">
+   <property name="text">
+    <string>City</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+  </action>
+  <action name="actionRoll_Tables">
+   <property name="text">
+    <string>Roll Tables</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
