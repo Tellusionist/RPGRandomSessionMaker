@@ -183,16 +183,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QTextEdit" name="txt_StartArea">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>130</y>
-      <width>461</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btn_rr_type">
     <property name="geometry">
      <rect>
@@ -230,6 +220,16 @@
     </property>
     <property name="text">
      <string>Re-Roll</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="txt_StartArea">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>130</y>
+      <width>331</width>
+      <height>31</height>
+     </rect>
     </property>
    </widget>
   </widget>

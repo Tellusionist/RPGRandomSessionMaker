@@ -6,6 +6,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setWindowIcon(QtGui.QIcon('./assets/5e_logo_dark_256.ico')) 
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.lbl_Header = QtWidgets.QLabel(self.centralwidget)
@@ -18,16 +19,16 @@ class Ui_MainWindow(object):
         self.btn_rr_all = QtWidgets.QPushButton(self.centralwidget)
         self.btn_rr_all.setGeometry(QtCore.QRect(30, 440, 131, 31))
         self.btn_rr_all.setObjectName("btn_rr_all")
-        self.lbl_Type = QtWidgets.QLabel(self.centralwidget)
-        self.lbl_Type.setGeometry(QtCore.QRect(170, 70, 31, 16))
-        self.lbl_Type.setObjectName("lbl_Type")
-        self.cb_Type = QtWidgets.QComboBox(self.centralwidget)
-        self.cb_Type.setGeometry(QtCore.QRect(210, 70, 91, 22))
-        self.cb_Type.setObjectName("cb_Type")
-        self.lck_type = QtWidgets.QCheckBox(self.centralwidget)
-        self.lck_type.setGeometry(QtCore.QRect(100, 70, 16, 18))
-        self.lck_type.setText("")
-        self.lck_type.setObjectName("lck_type")
+        self.lbl_DungeonType = QtWidgets.QLabel(self.centralwidget)
+        self.lbl_DungeonType.setGeometry(QtCore.QRect(170, 70, 31, 16))
+        self.lbl_DungeonType.setObjectName("lbl_DungeonType")
+        self.cb_DungeonType = QtWidgets.QComboBox(self.centralwidget)
+        self.cb_DungeonType.setGeometry(QtCore.QRect(210, 70, 91, 22))
+        self.cb_DungeonType.setObjectName("cb_DungeonType")
+        self.lck_Dungeontype = QtWidgets.QCheckBox(self.centralwidget)
+        self.lck_Dungeontype.setGeometry(QtCore.QRect(100, 70, 16, 18))
+        self.lck_Dungeontype.setText("")
+        self.lck_Dungeontype.setObjectName("lck_Dungeontype")
         self.lbl_Locked = QtWidgets.QLabel(self.centralwidget)
         self.lbl_Locked.setGeometry(QtCore.QRect(90, 50, 47, 13))
         font = QtGui.QFont()
@@ -52,7 +53,7 @@ class Ui_MainWindow(object):
         self.lck_StartArea.setGeometry(QtCore.QRect(100, 130, 16, 18))
         self.lck_StartArea.setText("")
         self.lck_StartArea.setObjectName("lck_StartArea")
-        self.txt_StartArea = QtWidgets.QTextEdit(self.centralwidget)
+        self.txt_StartArea = QtWidgets.QPlainTextEdit(self.centralwidget)
         self.txt_StartArea.setGeometry(QtCore.QRect(210, 130, 461, 31))
         self.txt_StartArea.setObjectName("txt_StartArea")
         self.btn_rr_type = QtWidgets.QPushButton(self.centralwidget)
@@ -147,27 +148,28 @@ class Ui_MainWindow(object):
         self.btn_rr_all.setText(_translate("MainWindow", "Generate Starting Area"))
         self.lbl_Locked.setText(_translate("MainWindow", "Locked"))
 
-        self.lbl_Type.setText(_translate("MainWindow", "Type:"))  
-        # load type values
+        self.lbl_DungeonType.setText(_translate("MainWindow", "Type:"))  
+        
+        # load dungeon type values (limit to distinct values)
         i = 0
         for item in list(set(val for dic in rolltables[rt_id['DungeonType']]['Data'] for val in dic.values())):
-            print('adding type:', item)
-            self.cb_Type.addItem("")
-            self.cb_Type.setItemText(i, _translate("MainWindow", item))
+            self.cb_DungeonType.addItem("")
+            self.cb_DungeonType.setItemText(i, _translate("MainWindow", item))
             i+=1        
 
         self.lbl_Environment.setText(_translate("MainWindow", "Environment:"))
-        # load type values
+        # load environment values
         i = 0
         for item in list(set(val for dic in rolltables[rt_id['Environment']]['Data'] for val in dic.values())):
-            print('adding env:', item)
             self.cb_Environment.addItem("")
             self.cb_Environment.setItemText(i, _translate("MainWindow", item))
             i+=1
 
         self.lbl_StartArea.setText(_translate("MainWindow", "Starting Area:"))
-        #roll = randint(1, len(rolltables[rt_id['StartArea']]['Data']))
-        #self.lck_StartArea.setText(rolltables[rt_id['StartArea']]['Data'][roll]['Value'])
+        
+        # Set default starting area
+        roll = randint(1, len(rolltables[rt_id['StartArea']]['Data']))
+        self.txt_StartArea.textCursor().insertText(rolltables[rt_id['StartArea']]['Data'][roll]['Value'])
 
         self.btn_rr_type.setText(_translate("MainWindow", "Re-Roll"))
         self.btn_rr_environment.setText(_translate("MainWindow", "Re-Roll"))
