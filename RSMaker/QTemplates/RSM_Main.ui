@@ -46,7 +46,7 @@
      <string>Generate Starting Area</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_Type">
+   <widget class="QLabel" name="lbl_DungeonType">
     <property name="geometry">
      <rect>
       <x>170</x>
@@ -59,7 +59,7 @@
      <string>Type:</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="cb_Type">
+   <widget class="QComboBox" name="cb_DungeonType">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -79,7 +79,7 @@
      </property>
     </item>
    </widget>
-   <widget class="QCheckBox" name="lck_type">
+   <widget class="QCheckBox" name="lck_DungeonType">
     <property name="geometry">
      <rect>
       <x>100</x>

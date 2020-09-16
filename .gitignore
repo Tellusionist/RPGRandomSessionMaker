@@ -4,3 +4,5 @@
 # Jupyter
 RSMaker/.ipynb_checkpoints
 RSMaker/I_Help.ipynb
+RSMaker/__pycache__
+RSMaker/Jupyter_Helper.ipynb
