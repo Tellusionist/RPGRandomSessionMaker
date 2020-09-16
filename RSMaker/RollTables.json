@@ -88,6 +88,33 @@
         {"Value": "Underdark"},
         {"Value": "Underwater"},
         {"Value": "Urban"}
+    ]},
+
+    {"Table":"Door", "Data":[ 
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden"},
+        {"Value": "Wooden, barred or locked"},
+        {"Value": "Wooden, barred or locked"},
+        {"Value": "Stone"},
+        {"Value": "Stone, barred or locked"},
+        {"Value": "Iron"},
+        {"Value": "Iron, barred or locked"},
+        {"Value": "Portcullis"},
+        {"Value": "Portcullis, locked in place"},
+        {"Value": "Secret door"},
+        {"Value": "Secret door, barred or locked"}
     ]}
+
+
+
+
 
 ]
