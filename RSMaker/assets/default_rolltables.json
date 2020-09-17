@@ -1,0 +1,62 @@
+[
+        {
+        "table":"Environment"
+        ,"columns":[["id","integer"],["value","text"],["wieght","integer"]]
+        ,"values": [
+                [1,"Arctic",1]
+                ,[2,"Costal",1]
+                ,[3,"Desert",1]
+                ,[4,"Forest",1]
+                ,[5,"Grassland",1]
+                ,[6,"Hill",1]
+                ,[7,"Jungle",1]
+                ,[8,"Mountain",1]
+                ,[9,"Swamp",1]
+                ,[10,"Underdark",1]
+                ,[11,"Underwater",1]
+                ,[12,"Urban",1]
+                ]
+        }
+        ,{
+        "table":"PlayerRace"
+        ,"columns":[["id","integer"],["value","text"],["wieght","integer"]]
+        ,"values" : [
+                [1,"Human",2]
+                ,[2,"Gnome",2]
+                ,[3,"Elf",2]
+                ,[4,"Half-Elf",2]
+                ,[5,"Dragonborn",2]
+                ,[6,"Half-Orc",2]
+                ,[7,"Tiefling",2]
+                ,[8,"Halfling",2]
+                ,[9,"Dwarf",2]
+                ,[10,"Aarakocra",1]
+                ,[11,"Goliath",1]
+                ,[12,"Genasi",1]
+                ,[13,"Kenku",1]
+                ,[14,"Firbolg",1]
+                ,[15,"Triton",1]
+                ,[16,"Tabaxi",1]
+                ,[17,"Goblin",1]
+                ,[18,"Warforged",1]
+                ,[19,"Yuan-Ti",1]
+                ,[20,"Aasimar",1]
+                ] 
+        }
+        ,{
+        "table":"StartArea"
+        ,"columns":[["id","integer"],["value","text"],["wieght","integer"],["passages","integer"],["doors","integer"]]
+        ,"values" : [
+                [1,"Square, 20 x 20ft.; passage on each wall",1,3,0]
+                ,[2,"Square, 20 x 20ft.; door on two walls, passage in third wall",1,1,2]
+                ,[3,"Square, 40 x 40 ft.; doors on three walls",1,0,3]
+                ,[4,"Rectangle, 80 x 20ft., with row of pillars down the middle; two passages leading from each long wall, doors on each short wall",1,2,2]
+                ,[5,"Rectangle, 20 x 40ft.; passage on each wall",1,3,0]
+                ,[6,"Circle, 40ft. diameter; one passage at each cardinal direction",1,3,0]
+                ,[7,"Circle, 40ft. diameter; one passage in each cardinal direction; well in middle of room (might lead down to lower level)",1,3,0]
+                ,[8,"Square, 20 x 20ft.; door on two walls, passage on third wall, secret door on fourth wall",1,1,2]
+                ,[9,"Passage, 10 ft. wide; T intersection",1,2,0]
+                ,[10,"Passage, 10ft. wide; four-way intersection",1,3,0]
+                ] 
+        }
+]
