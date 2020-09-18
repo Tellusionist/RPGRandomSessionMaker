@@ -1,25 +1,7 @@
 [
         {
-        "table":"Environment"
-        ,"columns":[["id","integer"],["value","text"],["wieght","integer"]]
-        ,"values": [
-                [1,"Arctic",1]
-                ,[2,"Costal",1]
-                ,[3,"Desert",1]
-                ,[4,"Forest",1]
-                ,[5,"Grassland",1]
-                ,[6,"Hill",1]
-                ,[7,"Jungle",1]
-                ,[8,"Mountain",1]
-                ,[9,"Swamp",1]
-                ,[10,"Underdark",1]
-                ,[11,"Underwater",1]
-                ,[12,"Urban",1]
-                ]
-        }
-        ,{
         "table":"PlayerRace"
-        ,"columns":[["id","integer"],["value","text"],["wieght","integer"]]
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"]]
         ,"values" : [
                 [1,"Human",2]
                 ,[2,"Gnome",2]
@@ -44,8 +26,72 @@
                 ] 
         }
         ,{
+        "table":"PlayerPersonality"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"]]
+        ,"values" : [
+                [1,"Shy",1]
+                ,[2,"Merciless",1]
+                ,[3,"Fearful",1]
+                ,[4,"Empathetic",1]
+                ,[5,"Generous",1]
+                ,[6,"Nervous",1]
+                ,[7,"Proud",1]
+                ,[8,"Unstable",1]
+                ,[9,"Know-it-all",1]
+                ,[10,"Absent-minded",1]
+                ,[11,"Apathetic",1]
+                ,[12,"Condescending",1]
+                ,[13,"Trickster",1]
+                ,[14,"Naïve",1]
+                ,[15,"Unreliable",1]
+                ,[16,"Chronic Liar",1]
+                ,[17,"Impule buyer/spender",1]
+                ,[18,"Organized",1]
+                ,[19,"Calm",1]
+                ,[20,"Hypochondriac",1]
+
+                ] 
+        }
+        ,{
+        "table":"PlayerClass"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"],["primary_stat","text"],["secondary_stat","text"],["proficiencies","text"]]
+        ,"values" : [
+                [1,"Bard",1,"CHA","DEX","Light armor, one skill of your choice, one musical instrument of your choice"]
+                ,[2,"Barbarian",1,"STR","CON","Shields, simple weapons, martial weapons"]
+                ,[3,"Druid",1,"WIS","CON","Light armor, medium armor, shields (druids will not wear armor or use shields made of metal)"]
+                ,[4,"Fighter",1,"STR","DEX","Light armor, medium armor, shields, simple weapons, martial weapons"]
+                ,[5,"Sorcerer",1,"CHA","CON","-"]
+                ,[6,"Monk",1,"DEX","WIS","Simple weapons, shortswords"]
+                ,[7,"Warlock",1,"CHA","CON","Light armor, simple weapons"]
+                ,[8,"Rogue",1,"DEX","INT","Light armor, one skill from the Thief skill list, thieves' tools"]
+                ,[9,"Cleric",1,"WIS","STR","Light armor, medium armor, shields"]
+                ,[10,"Ranger",1,"DEX","WIS","Light armor, medium armor, shields, simple weapons, martial weapons, one skill from the Ranger skill list"]
+                ,[11,"Wizard",1,"INT","DEX","-"]
+                ,[12,"Paladin",1,"STR","CHA","Light armor, medium armor, shields, simple weapons, martial weapons"]
+
+                ] 
+        }
+        ,{
+        "table":"Environment"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"]]
+        ,"values": [
+                [1,"Arctic",1]
+                ,[2,"Costal",1]
+                ,[3,"Desert",1]
+                ,[4,"Forest",1]
+                ,[5,"Grassland",1]
+                ,[6,"Hill",1]
+                ,[7,"Jungle",1]
+                ,[8,"Mountain",1]
+                ,[9,"Swamp",1]
+                ,[10,"Underdark",1]
+                ,[11,"Underwater",1]
+                ,[12,"Urban",1]
+                ]
+        }
+        ,{
         "table":"StartArea"
-        ,"columns":[["id","integer"],["value","text"],["wieght","integer"],["passages","integer"],["doors","integer"]]
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"],["passages","integer"],["doors","integer"]]
         ,"values" : [
                 [1,"Square, 20 x 20ft.; passage on each wall",1,3,0]
                 ,[2,"Square, 20 x 20ft.; door on two walls, passage in third wall",1,1,2]
@@ -57,6 +103,103 @@
                 ,[8,"Square, 20 x 20ft.; door on two walls, passage on third wall, secret door on fourth wall",1,1,2]
                 ,[9,"Passage, 10 ft. wide; T intersection",1,2,0]
                 ,[10,"Passage, 10ft. wide; four-way intersection",1,3,0]
+                ] 
+        }
+        ,{
+        "table":"DungeonType"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"]]
+        ,"values" : [
+                [1,"General",11]
+                ,[2,"Lair",1]
+                ,[3,"Tomb",1]
+                ,[4,"Temple/Shrine",1]
+                ,[5,"Stonghold",1]
+                ,[6,"Planar Gate",1]
+                ,[7,"Mine",1]
+                ,[8,"Maze",1]
+                ,[9,"Treasure Vault",1]
+                ,[10,"Death Trap",1]
+
+                ] 
+        }
+        ,{
+        "table":"Passages"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"],["chamber","integer"],["stair","integer"]]
+        ,"values" : [
+                [1,"Continue straight 30ft., no doors or side passages",2,0,0]
+                ,[2,"Continue straight 20ft., door to the right, then an additional 10 ft. ahead",2,0,0]
+                ,[3,"Continue straight 20ft.; passage ends in a door",1,0,0]
+                ,[4,"Continue straight 20ft., side passage to the right, then an additional 10 ft. ahead",2,0,0]
+                ,[5,"Continue straight 20ft., side passage to the left, then an additional 10 ft. ahead",2,0,0]
+                ,[6,"Continue straight 20ft., comes to a dead end; 10 percent chance of a secret door",1,0,0]
+                ,[7,"Continue straight 20ft., then the passage turns left and continues 10 ft.",2,0,0]
+                ,[8,"Continue straight 20ft., then the passage turns right and continues 10ft.",2,0,0]
+                ,[9,"Chamber (roll on the Chamber table)",5,1,0]
+                ,[10,"Stairs* (roll on the Stairs table, or chamber if you don't want multi-level)",1,0,1]
+
+                ] 
+        }
+        ,{
+        "table":"PassageWidth"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"]]
+        ,"values" : [
+                [1,"5ft",2]
+                ,[2,"10ft",10]
+                ,[3,"20ft",2]
+                ,[4,"30ft",2]
+                ,[5,"30ft.",1]
+                ,[6,"40ft., with row of pillars down the middle",1]
+                ,[7,"40ft., with double row of pillars",1]
+                ,[8,"40ft. wide, 20ft. high",1]
+                ,[9,"40ft. wide, 20ft. high, gallery 10ft. above floor allows access to level above",1]
+
+                ] 
+        }
+        ,{
+        "table":"Door"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"]]
+        ,"values" : [
+                [1,"Wooden",10]
+                ,[2,"Wooden, barred or locked",2]
+                ,[3,"Stone",1]
+                ,[4,"Stone, barred or locked",1]
+                ,[5,"Iron",1]
+                ,[6,"Iron, barred or locked",1]
+                ,[7,"Portcullis",1]
+                ,[8,"Portcullis, locked in place",1]
+                ,[9,"Secret door",1]
+                ,[10,"Secret door, barred or locked",1]
+                ] 
+        }
+        ,{
+        "table":"DoorBeyond"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"],["chamber","integer"],["stair","integer"]]
+        ,"values" : [
+                [1,"Passage extending 10 ft., then T intersection extending 10 ft. to the right and left",2,0,0]
+                ,[2,"Passage 20 ft. straight ahead",6,0,0]
+                ,[3,"Chamber (roll on the Chamber table)",10,1,0]
+                ,[4,"Stairs* (roll on the Stairs table, or chamber if you don't want multi-level)",1,0,1]
+                ,[5,"False door with trap",1,0,0]
+                ] 
+        }
+        ,{
+        "table":"Stair"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"]]
+        ,"values" : [
+                [1,"Down one level to a chamber",4]
+                ,[2,"Down one level to a passage 20ft. Long",4]
+                ,[3,"Down two levels to a chamber",1]
+                ,[4,"Down two levels to a passage 20ft. Long",1]
+                ,[5,"Down three levels to a chamber",1]
+                ,[6,"Down three levels to a passage 20ft. Long",1]
+                ,[7,"Up one level to a chamber",1]
+                ,[8,"Up one level to a passage 20ft. Long",1]
+                ,[9,"Up to a dead end",1]
+                ,[10,"Down to a dead end",1]
+                ,[11,"Chimney up one level to a passage 20ft. Long",1]
+                ,[12,"Chimney up two levels to a passage 20ft. Long",1]
+                ,[13,"Shaft (with or without elevator) down one level to a chamber",1]
+                ,[14,"Shaft (with or without elevator) up one level to a chamber and down one level to a chamber",1]
                 ] 
         }
 ]
