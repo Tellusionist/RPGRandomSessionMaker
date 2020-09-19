@@ -202,4 +202,15 @@
                 ,[14,"Shaft (with or without elevator) up one level to a chamber and down one level to a chamber",1]
                 ] 
         }
+        ,{
+        "table":"Exit"
+        ,"columns":[["id","integer"],["value","text"],["weight","integer"]]
+        ,"values" : [
+                [1,0,5]
+                ,[2,1,6]
+                ,[3,2,4]
+                ,[4,3,3]
+                ,[5,4,2]
+                ] 
+        }
 ]
