@@ -1,4 +1,4 @@
-import sys, json
+import sys, json, sqlite3
 from random import randint
 
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
@@ -11,39 +11,39 @@ class MainWindow(QMainWindow):
         uic.loadUi('./QTemplates/RSM_Main.ui', self)
         self.initial_setup()
 
-
-
-    def initial_setup(self):
-        _translate = QtCore.QCoreApplication.translate
-         # load dungeon type values (limit to distinct values)
-        i = 0
-        for item in list(set(val for dic in rolltables[rt_id['DungeonType']]['Data'] for val in dic.values())):
-            self.cb_DungeonType.addItem("")
-            self.cb_DungeonType.setItemText(i, _translate("MainWindow", item))
-            i+=1        
-
-        self.lbl_Environment.setText(_translate("MainWindow", "Environment:"))
-        # load environment values
-        i = 0
-        for item in list(set(val for dic in rolltables[rt_id['Environment']]['Data'] for val in dic.values())):
-            self.cb_Environment.addItem("")
-            self.cb_Environment.setItemText(i, _translate("MainWindow", item))
-            i+=1
-
-        self.lbl_StartArea.setText(_translate("MainWindow", "Starting Area:"))
+    def sql_query(self, sql):
+            conn = sqlite3.connect('rolltables.db')
+            c = conn.cursor()
+            c.execute(sql)
+            results = c.fetchall()
+            conn.close()
+            return results
         
-        self.btn_rr_StartArea.clicked.connect(lambda: self.simple_reroll(self.txt_StartArea, self.lck_StartArea, rt_id['StartArea']))
-        
-        # Set default starting area
-        roll = randint(1, len(rolltables[rt_id['StartArea']]['Data'])-1)
-        self.txt_StartArea.appendPlainText(rolltables[rt_id['StartArea']]['Data'][roll]['Value'])
+    def roll_query(self, table, columns='value'):
     
-    def simple_reroll(self, pt_target, lck, tableid):
+        roll = randint(1,rtable_rows[table])
+        
+        if isinstance(columns, str) or columns == '*':
+            select_cols = columns
+        else:   
+            select_cols = ''
+            for col in columns:
+                select_cols += col + ','
+            select_cols = select_cols[:-1]
+        
+        sql = f"Select {select_cols} from (Select rowid, *, sum(weight) over(Order by rowid) rt from {table}) where rt >= {roll} order by rt asc limit 1;"
+        conn = sqlite3.connect('rolltables.db')
+        c = conn.cursor()
+        c.execute(sql)
+        results = c.fetchone()
+        conn.close()
+        return results
+    
+    def simple_reroll(self, pt_target, lck, table):
         try:
             if not self.lck_StartArea.isChecked():
-                roll = randint(0, len(rolltables[tableid]['Data'])-1)
-                print("Rolled an", roll, "target:", pt_target.objectName(), "object type:", type(pt_target))
-                txt = rolltables[tableid]['Data'][roll]['Value']
+                results = self.roll_query(table, 'value')
+                txt = results[0]
                 pt_target.clear()
                 pt_target.appendPlainText(txt)
             else:
@@ -58,20 +58,53 @@ class MainWindow(QMainWindow):
         msgBox.setText(str(message))
         msgBox.setWindowTitle("Error!")
         msgBox.setStandardButtons(QMessageBox.Ok)
-        msgBox.exec()    
+        msgBox.exec()   
+
+
+    def initial_setup(self):
+        _translate = QtCore.QCoreApplication.translate
+         # load dungeon type values, enumerating to get incremental id
+        for item in enumerate(self.sql_query('Select value from DungeonType;')):
+            self.cb_DungeonType.addItem("")
+            self.cb_DungeonType.setItemText(item[0], _translate("MainWindow", item[1][0]))  
+
+        self.lbl_Environment.setText(_translate("MainWindow", "Environment:"))
+        # load environment values, enumerating to get incremental id
+        for item in enumerate(self.sql_query('Select value from Environment;')):
+            self.cb_Environment.addItem("")
+            self.cb_Environment.setItemText(item[0], _translate("MainWindow", item[1][0]))
+
+        self.lbl_StartArea.setText(_translate("MainWindow", "Starting Area:"))
+        
+        self.btn_rr_StartArea.clicked.connect(lambda: self.simple_reroll(self.txt_StartArea, self.lck_StartArea, 'StartArea'))
+        
+        # Set default starting area
+        results = self.roll_query('StartArea')
+        self.txt_StartArea.appendPlainText(results[0])
+
+         
+
+
+def get_table_metadata():
+    sql = 'Select tbl_name from sqlite_master;'
+    conn = sqlite3.connect('rolltables.db')
+    c = conn.cursor()
+    c.execute(sql)
+    results = c.fetchall()
+    rtable_rows={}
+    for table in results:
+        tbl_name = table[0]
+        sql = f"Select count(1) from {tbl_name};"
+        c.execute(sql)
+        cnt = c.fetchone()
+        rtable_rows[tbl_name] = cnt[0]
+    conn.close()
+    return rtable_rows
 
 if __name__ == "__main__":  
     # import roll tables
-    with open('rolltables.json','r') as f:
-        rolltables = json.load(f)
+    rtable_rows = get_table_metadata()
     
-    # map table id and names to rt_id dictionary
-    i=0
-    rt_id = {}
-    for t in rolltables:
-        rt_id.update({t['Table']:i})
-        i+=1
-
     # load Ui
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = MainWindow()
