@@ -42,6 +42,12 @@ class MainWindow(QMainWindow):
             btn = self.findChild(QtWidgets.QPushButton, "btn_rr_"+table)
             btn.clicked.connect(lambda: self.reroll('PlainText'))
 
+        # connect "roll all" button
+        self.btn_all_rr.clicked.connect(self.reroll_all)
+
+        # connect features button
+        self.btn_rr_Feature.clicked.connect(lambda: self.reroll('PlainText'))
+
     def sql_query(self, sql):
             conn = sqlite3.connect('rolltables.db')
             c = conn.cursor()
@@ -69,30 +75,39 @@ class MainWindow(QMainWindow):
         results = c.fetchone()
         conn.close()
         return results
-    
+
     def reroll(self, target_type='PlainText'):
         # Use the name of the sender to check locks and set table
-        # this may be a problem for multiple buttons that query the same table
         table = self.sender().objectName()[7:]
-        lck = self.findChild(QtWidgets.QCheckBox, "lck_"+table)
-        try:
-            if not lck.isChecked():
-                if target_type == 'PlainText':
-                    target = self.findChild(QtWidgets.QPlainTextEdit, 'txt_'+table)
-                    results = self.roll_query(table, 'value')
-                    txt = results[0]
-                    target.clear()
-                    target.appendPlainText(txt)
-                elif target_type == 'ComboBox':
-                    target = self.findChild(QtWidgets.QComboBox, 'cb_'+table)
-                    results = self.roll_query(table, 'rowid')
-                    rowid = results[0]-1 #sqlite is 1 based, Qt5 is 0 based
-                    target.setCurrentIndex(rowid)
-            else:
-                print("Field is locked, not updating")
-        except Exception as e:
-            print("Error received:", e)
-            self.warning_popup(e)
+        rx = QtCore.QRegExp("lck_"+table+".*")
+        lcks = self.findChildren(QtWidgets.QCheckBox, rx) # in case there are more than 1 features
+        for lck in lcks:
+            print(lck.objectName())
+            try:
+                if not lck.isChecked():
+                    if target_type == 'PlainText':
+                        target = self.findChild(QtWidgets.QPlainTextEdit, lck.objectName().replace('lck','txt'))
+                        results = self.roll_query(table, 'value')
+                        txt = results[0]
+                        target.clear()
+                        target.appendPlainText(txt)
+                    elif target_type == 'ComboBox':
+                        target = self.findChild(QtWidgets.QComboBox, lck.objectName().replace('lck','cb'))
+                        results = self.roll_query(table, 'rowid')
+                        rowid = results[0]-1 #sqlite is 1 based, Qt5 is 0 based
+                        target.setCurrentIndex(rowid)
+                else:
+                    print(lck.objectName(), "is locked, not updating")
+            except Exception as e:
+                print("Error received:", e)
+                self.warning_popup(e)
+    
+    def reroll_all(self):
+        rx = QtCore.QRegExp("btn_rr_.*")
+        btns = self.findChildren(QtWidgets.QPushButton, rx)
+        for btn in btns:
+            btn.click()
+
     
     def warning_popup(self, message):
         msgBox = QMessageBox()
