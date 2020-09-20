@@ -181,7 +181,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_rr_type">
+   <widget class="QPushButton" name="btn_rr_DungeonType">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -194,7 +194,7 @@
      <string>Re-Roll</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_rr_environment">
+   <widget class="QPushButton" name="btn_rr_Environment">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -230,7 +230,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_StartArea_Noise">
+   <widget class="QLabel" name="lbl_Noise">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -249,7 +249,7 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_rr_StartArea_Noise">
+   <widget class="QPushButton" name="btn_rr_Noise">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -262,7 +262,7 @@
      <string>Re-Roll</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="lck_StartArea_Noise">
+   <widget class="QCheckBox" name="lck_Noise">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -275,7 +275,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="txt_StartArea_Noise">
+   <widget class="QPlainTextEdit" name="txt_Noise">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -285,7 +285,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_StartArea_Air">
+   <widget class="QLabel" name="lbl_Air">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -304,7 +304,7 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_rr_StartArea_Air">
+   <widget class="QPushButton" name="btn_rr_Air">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -317,7 +317,7 @@
      <string>Re-Roll</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="lck_StartArea_Air">
+   <widget class="QCheckBox" name="lck_Air">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -330,7 +330,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="txt_StartArea_Air">
+   <widget class="QPlainTextEdit" name="txt_Air">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -340,7 +340,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="lbl_StartArea_Odor">
+   <widget class="QLabel" name="lbl_Odor">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -359,7 +359,7 @@
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="txt_StartArea_Odor">
+   <widget class="QPlainTextEdit" name="txt_Odor">
     <property name="geometry">
      <rect>
       <x>210</x>
@@ -369,7 +369,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QCheckBox" name="lck_StartArea_Odor">
+   <widget class="QCheckBox" name="lck_Odor">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -382,7 +382,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_rr_StartArea_Odor">
+   <widget class="QPushButton" name="btn_rr_Odor">
     <property name="geometry">
      <rect>
       <x>10</x>

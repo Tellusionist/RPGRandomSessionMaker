@@ -11,6 +11,37 @@ class MainWindow(QMainWindow):
         uic.loadUi('./QTemplates/RSM_Main.ui', self)
         self.initial_setup()
 
+
+    def initial_setup(self):
+        _translate = QtCore.QCoreApplication.translate
+        
+        # load dropdown default values and connect buttons
+        dropdowns = [self.cb_DungeonType, self.cb_Environment]
+        for dropdown in dropdowns:
+            table = dropdown.objectName()[3:]
+            # Connect re-roll buttons
+            btn = self.findChild(QtWidgets.QPushButton, "btn_rr_"+table)
+            btn.clicked.connect(lambda: self.reroll('ComboBox'))
+            
+            # load default values
+            sql = f"Select value from {table};"
+            for item in enumerate(self.sql_query(sql)): # enumerating to get incremental id
+                dropdown.addItem("")
+                dropdown.setItemText(item[0], _translate("MainWindow", item[1][0]))  
+
+
+
+        # load plaintext default values and connect buttons
+        plaintexts = [self.txt_StartArea, self.txt_Noise, self.txt_Odor, self.txt_Air]
+        for pt in plaintexts:
+            table = pt.objectName()[4:]
+            results = self.roll_query(table)
+            pt.appendPlainText(results[0])
+
+            # Connect re-roll buttons
+            btn = self.findChild(QtWidgets.QPushButton, "btn_rr_"+table)
+            btn.clicked.connect(lambda: self.reroll('PlainText'))
+
     def sql_query(self, sql):
             conn = sqlite3.connect('rolltables.db')
             c = conn.cursor()
@@ -39,13 +70,24 @@ class MainWindow(QMainWindow):
         conn.close()
         return results
     
-    def simple_reroll(self, pt_target, lck, table):
+    def reroll(self, target_type='PlainText'):
+        # Use the name of the sender to check locks and set table
+        # this may be a problem for multiple buttons that query the same table
+        table = self.sender().objectName()[7:]
+        lck = self.findChild(QtWidgets.QCheckBox, "lck_"+table)
         try:
-            if not self.lck_StartArea.isChecked():
-                results = self.roll_query(table, 'value')
-                txt = results[0]
-                pt_target.clear()
-                pt_target.appendPlainText(txt)
+            if not lck.isChecked():
+                if target_type == 'PlainText':
+                    target = self.findChild(QtWidgets.QPlainTextEdit, 'txt_'+table)
+                    results = self.roll_query(table, 'value')
+                    txt = results[0]
+                    target.clear()
+                    target.appendPlainText(txt)
+                elif target_type == 'ComboBox':
+                    target = self.findChild(QtWidgets.QComboBox, 'cb_'+table)
+                    results = self.roll_query(table, 'rowid')
+                    rowid = results[0]-1 #sqlite is 1 based, Qt5 is 0 based
+                    target.setCurrentIndex(rowid)
             else:
                 print("Field is locked, not updating")
         except Exception as e:
@@ -58,31 +100,7 @@ class MainWindow(QMainWindow):
         msgBox.setText(str(message))
         msgBox.setWindowTitle("Error!")
         msgBox.setStandardButtons(QMessageBox.Ok)
-        msgBox.exec()   
-
-
-    def initial_setup(self):
-        _translate = QtCore.QCoreApplication.translate
-         # load dungeon type values, enumerating to get incremental id
-        for item in enumerate(self.sql_query('Select value from DungeonType;')):
-            self.cb_DungeonType.addItem("")
-            self.cb_DungeonType.setItemText(item[0], _translate("MainWindow", item[1][0]))  
-
-        self.lbl_Environment.setText(_translate("MainWindow", "Environment:"))
-        # load environment values, enumerating to get incremental id
-        for item in enumerate(self.sql_query('Select value from Environment;')):
-            self.cb_Environment.addItem("")
-            self.cb_Environment.setItemText(item[0], _translate("MainWindow", item[1][0]))
-
-        self.lbl_StartArea.setText(_translate("MainWindow", "Starting Area:"))
-        
-        self.btn_rr_StartArea.clicked.connect(lambda: self.simple_reroll(self.txt_StartArea, self.lck_StartArea, 'StartArea'))
-        
-        # Set default starting area
-        results = self.roll_query('StartArea')
-        self.txt_StartArea.appendPlainText(results[0])
-
-         
+        msgBox.exec()
 
 
 def get_table_metadata():
@@ -94,7 +112,7 @@ def get_table_metadata():
     rtable_rows={}
     for table in results:
         tbl_name = table[0]
-        sql = f"Select count(1) from {tbl_name};"
+        sql = f"Select sum(weight) from {tbl_name};"
         c.execute(sql)
         cnt = c.fetchone()
         rtable_rows[tbl_name] = cnt[0]
@@ -104,11 +122,9 @@ def get_table_metadata():
 if __name__ == "__main__":  
     # import roll tables
     rtable_rows = get_table_metadata()
-    
+
     # load Ui
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = MainWindow()
     MainWindow.show()
     sys.exit(app.exec_())
-
-
