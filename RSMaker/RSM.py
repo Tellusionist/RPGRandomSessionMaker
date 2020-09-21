@@ -29,24 +29,16 @@ class MainWindow(QMainWindow):
                 dropdown.addItem("")
                 dropdown.setItemText(item[0], _translate("MainWindow", item[1][0]))  
 
-
-
-        # load plaintext default values and connect buttons
-        plaintexts = [self.txt_StartArea, self.txt_Noise, self.txt_Odor, self.txt_Air]
-        for pt in plaintexts:
-            table = pt.objectName()[4:]
-            results = self.roll_query(table)
-            pt.appendPlainText(results[0])
-
-            # Connect re-roll buttons
-            btn = self.findChild(QtWidgets.QPushButton, "btn_rr_"+table)
+        # connect plaintext buttons
+        rx = QtCore.QRegExp("btn_rr_.*")
+        btns = self.findChildren(QtWidgets.QPushButton, rx)
+        excluded_btns = [self.btn_rr_Environment, self.btn_rr_DungeonType]
+        btns = [x for x in btns if x not in excluded_btns]
+        for btn in btns:
             btn.clicked.connect(lambda: self.reroll('PlainText'))
 
         # connect "roll all" button
         self.btn_all_rr.clicked.connect(self.reroll_all)
-
-        # connect features button
-        self.btn_rr_Feature.clicked.connect(lambda: self.reroll('PlainText'))
 
     def sql_query(self, sql):
             conn = sqlite3.connect('rolltables.db')
@@ -79,10 +71,9 @@ class MainWindow(QMainWindow):
     def reroll(self, target_type='PlainText'):
         # Use the name of the sender to check locks and set table
         table = self.sender().objectName()[7:]
-        rx = QtCore.QRegExp("lck_"+table+".*")
+        rx = QtCore.QRegExp("lck_"+table+".[0-9]|lck_"+table+"\\b")
         lcks = self.findChildren(QtWidgets.QCheckBox, rx) # in case there are more than 1 features
         for lck in lcks:
-            print(lck.objectName())
             try:
                 if not lck.isChecked():
                     if target_type == 'PlainText':
