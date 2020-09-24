@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>715</width>
-    <height>629</height>
+    <width>1033</width>
+    <height>609</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>RPG Random Session Maker</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources/QtResources.qrc">
+    <normaloff>:/icons/5e_logo_dark_256.bmp</normaloff>:/icons/5e_logo_dark_256.bmp</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="lbl_Header">
@@ -91,7 +95,7 @@
    <widget class="QLabel" name="lbl_Locked">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>83</x>
       <y>50</y>
       <width>47</width>
       <height>13</height>
@@ -563,8 +567,8 @@
    <widget class="QPlainTextEdit" name="txt_Furnish_3">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>400</y>
+      <x>50</x>
+      <y>540</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -585,8 +589,8 @@
    <widget class="QPlainTextEdit" name="txt_Furnish_1">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>340</y>
+      <x>50</x>
+      <y>480</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -607,8 +611,8 @@
    <widget class="QPlainTextEdit" name="txt_Furnish_2">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>370</y>
+      <x>50</x>
+      <y>510</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -629,8 +633,8 @@
    <widget class="QLabel" name="lbl_Furnish">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>320</y>
+      <x>70</x>
+      <y>460</y>
       <width>71</width>
       <height>16</height>
      </rect>
@@ -648,8 +652,8 @@
    <widget class="QCheckBox" name="lck_Furnish_1">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>340</y>
+      <x>20</x>
+      <y>480</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -661,8 +665,8 @@
    <widget class="QPushButton" name="btn_rr_Furnish">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>290</y>
+      <x>70</x>
+      <y>430</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -674,8 +678,8 @@
    <widget class="QCheckBox" name="lck_Furnish_3">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>400</y>
+      <x>20</x>
+      <y>540</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -687,8 +691,8 @@
    <widget class="QCheckBox" name="lck_Furnish_2">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>370</y>
+      <x>20</x>
+      <y>510</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -700,7 +704,7 @@
    <widget class="QPlainTextEdit" name="txt_Furnish_Utensil_3">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>220</x>
       <y>400</y>
       <width>121</width>
       <height>21</height>
@@ -722,7 +726,7 @@
    <widget class="QPlainTextEdit" name="txt_Furnish_Utensil_1">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>220</x>
       <y>340</y>
       <width>121</width>
       <height>21</height>
@@ -744,7 +748,7 @@
    <widget class="QLabel" name="lbl_Furnish_Utensil">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>230</x>
       <y>320</y>
       <width>101</width>
       <height>16</height>
@@ -763,7 +767,7 @@
    <widget class="QPlainTextEdit" name="txt_Furnish_Utensil_2">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>220</x>
       <y>370</y>
       <width>121</width>
       <height>21</height>
@@ -785,7 +789,7 @@
    <widget class="QCheckBox" name="lck_Furnish_Utensil_1">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>190</x>
       <y>340</y>
       <width>16</width>
       <height>18</height>
@@ -798,7 +802,7 @@
    <widget class="QCheckBox" name="lck_Furnish_Utensil_2">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>190</x>
       <y>370</y>
       <width>16</width>
       <height>18</height>
@@ -811,7 +815,7 @@
    <widget class="QCheckBox" name="lck_Furnish_Utensil_3">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>190</x>
       <y>400</y>
       <width>16</width>
       <height>18</height>
@@ -824,7 +828,7 @@
    <widget class="QPushButton" name="btn_rr_Furnish_Utensil">
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>240</x>
       <y>290</y>
       <width>71</width>
       <height>21</height>
@@ -837,7 +841,7 @@
    <widget class="QPlainTextEdit" name="txt_Book_3">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>390</x>
       <y>400</y>
       <width>121</width>
       <height>21</height>
@@ -859,7 +863,7 @@
    <widget class="QPlainTextEdit" name="txt_Book_1">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>390</x>
       <y>340</y>
       <width>121</width>
       <height>21</height>
@@ -881,7 +885,7 @@
    <widget class="QLabel" name="lbl_Book">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>410</x>
       <y>320</y>
       <width>71</width>
       <height>16</height>
@@ -900,7 +904,7 @@
    <widget class="QPlainTextEdit" name="txt_Book_2">
     <property name="geometry">
      <rect>
-      <x>570</x>
+      <x>390</x>
       <y>370</y>
       <width>121</width>
       <height>21</height>
@@ -922,7 +926,7 @@
    <widget class="QCheckBox" name="lck_Book_1">
     <property name="geometry">
      <rect>
-      <x>540</x>
+      <x>360</x>
       <y>340</y>
       <width>16</width>
       <height>18</height>
@@ -935,7 +939,7 @@
    <widget class="QCheckBox" name="lck_Book_2">
     <property name="geometry">
      <rect>
-      <x>540</x>
+      <x>360</x>
       <y>370</y>
       <width>16</width>
       <height>18</height>
@@ -948,7 +952,7 @@
    <widget class="QCheckBox" name="lck_Book_3">
     <property name="geometry">
      <rect>
-      <x>540</x>
+      <x>360</x>
       <y>400</y>
       <width>16</width>
       <height>18</height>
@@ -961,7 +965,7 @@
    <widget class="QPushButton" name="btn_rr_Book">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>410</x>
       <y>290</y>
       <width>71</width>
       <height>21</height>
@@ -974,8 +978,8 @@
    <widget class="QCheckBox" name="lck_Container_Contents_2">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>520</y>
+      <x>530</x>
+      <y>370</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -987,8 +991,8 @@
    <widget class="QPlainTextEdit" name="txt_Container_Contents_1">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>490</y>
+      <x>560</x>
+      <y>340</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1009,8 +1013,8 @@
    <widget class="QPlainTextEdit" name="txt_Container_Contents_2">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>520</y>
+      <x>560</x>
+      <y>370</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1031,8 +1035,8 @@
    <widget class="QCheckBox" name="lck_Container_Contents_3">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>550</y>
+      <x>530</x>
+      <y>400</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -1044,8 +1048,8 @@
    <widget class="QPushButton" name="btn_rr_Container_Contents">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>440</y>
+      <x>580</x>
+      <y>290</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -1057,8 +1061,8 @@
    <widget class="QLabel" name="lbl_Container_Contents">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>470</y>
+      <x>570</x>
+      <y>320</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -1076,8 +1080,8 @@
    <widget class="QPlainTextEdit" name="txt_Container_Contents_3">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>550</y>
+      <x>560</x>
+      <y>400</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1098,8 +1102,8 @@
    <widget class="QCheckBox" name="lck_Container_Contents_1">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>490</y>
+      <x>530</x>
+      <y>340</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -1112,7 +1116,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>490</y>
+      <y>480</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -1125,7 +1129,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>490</y>
+      <y>480</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1147,7 +1151,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>520</y>
+      <y>510</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -1160,7 +1164,7 @@
     <property name="geometry">
      <rect>
       <x>230</x>
-      <y>470</y>
+      <y>460</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -1179,7 +1183,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>550</y>
+      <y>540</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -1192,7 +1196,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>520</y>
+      <y>510</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1214,7 +1218,7 @@
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>440</y>
+      <y>430</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -1227,7 +1231,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>550</y>
+      <y>540</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1249,7 +1253,7 @@
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>490</y>
+      <y>480</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -1262,7 +1266,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>550</y>
+      <y>540</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1284,7 +1288,7 @@
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>550</y>
+      <y>540</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -1297,7 +1301,7 @@
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>520</y>
+      <y>510</y>
       <width>16</width>
       <height>18</height>
      </rect>
@@ -1310,7 +1314,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>440</y>
+      <y>430</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -1323,7 +1327,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>490</y>
+      <y>480</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1345,7 +1349,7 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>520</y>
+      <y>510</y>
       <width>121</width>
       <height>21</height>
      </rect>
@@ -1367,7 +1371,7 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>470</y>
+      <y>460</y>
       <width>101</width>
       <height>16</height>
      </rect>
@@ -1382,13 +1386,39 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="btn_gen_chamber">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>20</y>
+      <width>101</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Generate Chamber</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_gen_passage">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>280</y>
+      <width>101</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Generate Passage</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>715</width>
+     <width>1033</width>
      <height>20</height>
     </rect>
    </property>
@@ -1499,6 +1529,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources/QtResources.qrc"/>
+ </resources>
  <connections/>
 </ui>
