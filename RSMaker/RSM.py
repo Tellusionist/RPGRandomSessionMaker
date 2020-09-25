@@ -1,7 +1,7 @@
 import sys
 from random import randint
 
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QMainWindow
 
 from QTemplates import RSM_Main, Chamber
@@ -14,23 +14,56 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         self.setupUi(self)
         QtSetup.generic_setup(self)
 
-        # unique buttons for this window
-        self.btn_gen_chamber.clicked.connect(self.new_chamber)
-        self.btn_pull_chamber.clicked.connect(self.pull_chamber)
+        
 
-        # initialize list for other dialoge windows
+        # initialize list and helpers for chambers
+        self.btn_gen_chamber.clicked.connect(self.new_chamber)
         self.chambers = list()
-        self.passages = list()
+        self.chamber_btn_x = 10
+        self.chamber_btn_y = 20
+        self.chamber_btn_x_initial = 10
+        self.chamber_btn_x_offset = 120
+        self.chamber_btn_y_offset = 30
+        self.chamber_btn_x_limit = 251
+        self.chamber_btn_y_limit = 201
+        self.chamber_id = 0
+
+
 
     # custom functions for this window
     def new_chamber(self):
+        if self.chamber_btn_y > self.chamber_btn_y_limit:
+            QtSetup.warning_popup("Max Chambers reached.")
+            return
+        
+        # create new button
+        c_btn = QtWidgets.QPushButton(self.box_chambers)
+        c_btn.setGeometry(QtCore.QRect(self.chamber_btn_x, self.chamber_btn_y, 111, 23))
+        c_btn.setObjectName("btn_chamber_"+str(self.chamber_id))
+        c_btn.setText(QtCore.QCoreApplication.translate("MainWindow", "Chamber "+str(self.chamber_id)))
+        c_btn.clicked.connect(self.pull_chamber)
+        c_btn.show()
+
+        # add and show new chamber window
         chamber = ChamberWindow(self)
         self.chambers.append(chamber)
-        chamber.show()
+        if self.b_ShowChamber.isChecked():
+            chamber.show()
+
+        # increment chamber helpers
+        self.chamber_btn_x += self.chamber_btn_x_offset
+        
+        if self.chamber_btn_x > 251:
+            self.chamber_btn_x = self.chamber_btn_x_initial # reset x position
+            self.chamber_btn_y += self.chamber_btn_y_offset # increment y
+
+        self.chamber_id +=1
 
     def pull_chamber(self):
         try:
-            chamber = self.chambers[int(self.dsb_chambers.value())]
+            cid = self.sender().objectName()
+            cid = int(cid[cid.rfind('_')+1:])
+            chamber = self.chambers[cid]
             chamber.show()
         except Exception as e:
             print("Error received:", e)

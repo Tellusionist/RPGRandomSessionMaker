@@ -1,4 +1,4 @@
-import json, sqlite3
+import  sqlite3
 from random import randint
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox, QMainWindow
@@ -25,7 +25,7 @@ rtable_rows = get_table_metadata()
 def generic_setup(self):
     _translate = QtCore.QCoreApplication.translate
     
-    # load dropdown default values and connect buttons
+    # load genertic dropdown default values and connect buttons
     dropdowns = [self.cb_DungeonType, self.cb_Environment]
     for dropdown in dropdowns:
         table = dropdown.objectName()[3:]
@@ -39,7 +39,7 @@ def generic_setup(self):
             dropdown.addItem("")
             dropdown.setItemText(item[0], _translate("MainWindow", item[1][0]))  
 
-    # connect plaintext buttons
+    # connect generic plaintext buttons
     rx = QtCore.QRegExp("btn_rr_.*")
     btns = self.findChildren(QtWidgets.QPushButton, rx)
     excluded_btns = [self.btn_rr_DungeonType, self.btn_rr_Environment]

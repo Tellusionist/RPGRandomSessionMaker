@@ -1389,62 +1389,23 @@
    <widget class="QGroupBox" name="box_chambers">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>630</x>
       <y>40</y>
-      <width>271</width>
-      <height>161</height>
+      <width>381</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="title">
      <string>Chambers</string>
     </property>
-    <widget class="QPushButton" name="btn_gen_chamber">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>111</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Generate Chamber</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="btn_pull_chamber">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>80</y>
-       <width>111</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Retireve Chamber</string>
-     </property>
-    </widget>
-    <widget class="QDoubleSpinBox" name="dsb_chambers">
-     <property name="geometry">
-      <rect>
-       <x>150</x>
-       <y>90</y>
-       <width>62</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="decimals">
-      <number>0</number>
-     </property>
-    </widget>
    </widget>
    <widget class="QGroupBox" name="box_passages">
     <property name="geometry">
      <rect>
-      <x>720</x>
-      <y>280</y>
-      <width>251</width>
-      <height>181</height>
+      <x>610</x>
+      <y>440</y>
+      <width>361</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="title">
@@ -1463,6 +1424,32 @@
       <string>Generate Passage</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="btn_gen_chamber">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>10</y>
+      <width>111</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Generate Chamber</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="b_ShowChamber">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>14</y>
+      <width>161</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show Chamber on Generate</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
