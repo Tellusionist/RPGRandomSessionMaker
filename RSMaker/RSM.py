@@ -29,8 +29,12 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         chamber.show()
 
     def pull_chamber(self):
-        chamber = self.chambers[0]
-        chamber.show()
+        try:
+            chamber = self.chambers[int(self.dsb_chambers.value())]
+            chamber.show()
+        except Exception as e:
+            print("Error received:", e)
+            QtSetup.warning_popup(e)
 
 
 class ChamberWindow(QMainWindow, Chamber.Ui_MainWindow):
