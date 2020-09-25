@@ -34,7 +34,7 @@
      <attribute name="title">
       <string>Chamber Details</string>
      </attribute>
-     <widget class="QPushButton" name="btn_rr_Odor">
+     <widget class="QPushButton" name="btn_rrt_Odor">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -60,7 +60,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Feature_2">
+     <widget class="QPlainTextEdit" name="tx_Feature_2">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -82,7 +82,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Furnish_Utensil">
+     <widget class="QPushButton" name="btn_rrt_Furnish_Utensil">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -108,7 +108,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Religous_1">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Religous_1">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -130,7 +130,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Odor">
+     <widget class="QPlainTextEdit" name="tx_Odor">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -156,7 +156,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Feature_1">
+     <widget class="QPlainTextEdit" name="tx_Feature_1">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -191,7 +191,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Container_Contents_1">
+     <widget class="QPlainTextEdit" name="tx_Container_Contents_1">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -213,7 +213,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Feature">
+     <widget class="QPushButton" name="btn_rrt_Feature">
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -226,7 +226,7 @@
        <string>Re-Roll</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Furnish_Mage">
+     <widget class="QPushButton" name="btn_rrt_Furnish_Mage">
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -271,7 +271,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Noise">
+     <widget class="QPlainTextEdit" name="tx_Noise">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -284,7 +284,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Container_Contents">
+     <widget class="QPushButton" name="btn_rrt_Container_Contents">
       <property name="geometry">
        <rect>
         <x>580</x>
@@ -297,7 +297,7 @@
        <string>Re-Roll</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Utensil_3">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Utensil_3">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -319,7 +319,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_1">
+     <widget class="QPlainTextEdit" name="tx_Furnish_1">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -341,7 +341,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Religous_3">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Religous_3">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -363,7 +363,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_2">
+     <widget class="QPlainTextEdit" name="tx_Furnish_2">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -482,7 +482,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_3">
+     <widget class="QPlainTextEdit" name="tx_Furnish_3">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -542,7 +542,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Book_3">
+     <widget class="QPlainTextEdit" name="tx_Book_3">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -564,7 +564,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Utensil_2">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Utensil_2">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -631,7 +631,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Mage_1">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Mage_1">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -653,7 +653,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Container_Contents_2">
+     <widget class="QPlainTextEdit" name="tx_Container_Contents_2">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -675,7 +675,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Noise">
+     <widget class="QPushButton" name="btn_rrt_Noise">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -688,7 +688,7 @@
        <string>Re-Roll</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Environment">
+     <widget class="QPushButton" name="btn_rrd_Environment">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -797,7 +797,7 @@
        <string>Locked</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Air">
+     <widget class="QPushButton" name="btn_rrt_Air">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -848,7 +848,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Book_2">
+     <widget class="QPlainTextEdit" name="tx_Book_2">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -893,7 +893,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Air">
+     <widget class="QPlainTextEdit" name="tx_Air">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -906,7 +906,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Mage_3">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Mage_3">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -947,7 +947,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Book">
+     <widget class="QPushButton" name="btn_rrt_Book">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -960,7 +960,7 @@
        <string>Re-Roll</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_DungeonType">
+     <widget class="QPushButton" name="btn_rrd_DungeonType">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -986,7 +986,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Mage_2">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Mage_2">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -1021,7 +1021,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Container_Contents_3">
+     <widget class="QPlainTextEdit" name="tx_Container_Contents_3">
       <property name="geometry">
        <rect>
         <x>560</x>
@@ -1043,7 +1043,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Feature_3">
+     <widget class="QPlainTextEdit" name="tx_Feature_3">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -1097,7 +1097,7 @@
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Religous_2">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Religous_2">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -1132,7 +1132,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Furnish_Utensil_1">
+     <widget class="QPlainTextEdit" name="tx_Furnish_Utensil_1">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -1154,7 +1154,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Book_1">
+     <widget class="QPlainTextEdit" name="tx_Book_1">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -1292,7 +1292,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Furnish">
+     <widget class="QPushButton" name="btn_rrt_Furnish">
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -1305,7 +1305,7 @@
        <string>Re-Roll</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Furnish_Religous">
+     <widget class="QPushButton" name="btn_rrt_Furnish_Religous">
       <property name="geometry">
        <rect>
         <x>410</x>
@@ -1328,7 +1328,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_ChamSize">
+     <widget class="QPushButton" name="btn_rrt_ChamSize">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1360,7 +1360,7 @@
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_ChamSize">
+     <widget class="QPlainTextEdit" name="tx_ChamSize">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -1405,7 +1405,7 @@
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_ChamPurpose">
+     <widget class="QPlainTextEdit" name="tx_ChamPurpose">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -1418,7 +1418,7 @@
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_ChamPurpose">
+     <widget class="QPushButton" name="btn_rrt_ChamPurpose">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1444,7 +1444,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_ChamHazard">
+     <widget class="QPushButton" name="btn_rrt_ChamHazard">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -1457,7 +1457,7 @@
        <string>Re-Roll</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_ChamHazard">
+     <widget class="QPlainTextEdit" name="tx_ChamHazard">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -1502,7 +1502,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Trap">
+     <widget class="QPlainTextEdit" name="tx_Trap">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -1534,7 +1534,7 @@
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Trap">
+     <widget class="QPushButton" name="btn_rru_Trap">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -1560,7 +1560,7 @@
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="btn_rr_Trick">
+     <widget class="QPushButton" name="btn_rru_Trick">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -1605,7 +1605,7 @@
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="txt_Trick">
+     <widget class="QPlainTextEdit" name="tx_Trick">
       <property name="geometry">
        <rect>
         <x>490</x>

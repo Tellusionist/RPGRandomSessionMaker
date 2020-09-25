@@ -25,27 +25,21 @@ rtable_rows = get_table_metadata()
 def generic_setup(self):
     _translate = QtCore.QCoreApplication.translate
     
-    # load genertic dropdown default values and connect buttons
-    dropdowns = [self.cb_DungeonType, self.cb_Environment]
+    # load generic dropdown default values 
+    rx = QtCore.QRegExp("cb_.*")
+    dropdowns = self.findChildren(QtWidgets.QComboBox, rx)
     for dropdown in dropdowns:
         table = dropdown.objectName()[3:]
-        # Connect re-roll buttons
-        btn = self.findChild(QtWidgets.QPushButton, "btn_rr_"+table)
-        btn.clicked.connect(lambda: reroll(self, 'ComboBox'))
-        
-        # load default values
         sql = f"Select value from {table};"
         for item in enumerate(sql_query(sql)): # enumerating to get incremental id
             dropdown.addItem("")
             dropdown.setItemText(item[0], _translate("MainWindow", item[1][0]))  
 
-    # connect generic plaintext buttons
-    rx = QtCore.QRegExp("btn_rr_.*")
+    # connect generic dropdown and text buttons
+    rx = QtCore.QRegExp("btn_rr[dt]_.*")
     btns = self.findChildren(QtWidgets.QPushButton, rx)
-    excluded_btns = [self.btn_rr_DungeonType, self.btn_rr_Environment]
-    btns = [x for x in btns if x not in excluded_btns]
     for btn in btns:
-        btn.clicked.connect(lambda: reroll(self, 'PlainText'))
+        btn.clicked.connect(lambda: reroll(self))
 
     # connect roll all button
     self.btn_all_rr.clicked.connect(lambda: reroll_all(self))
@@ -78,33 +72,33 @@ def roll_query(table, columns='value'):
     conn.close()
     return results
 
-def reroll(self, target_type='PlainText'):
-    # Use the name of the sender to check locks and set table
-    table = self.sender().objectName()[7:]
-    rx = QtCore.QRegExp("lck_"+table+".[0-9]|lck_"+table+"\\b")
-    lcks = self.findChildren(QtWidgets.QCheckBox, rx) # in case there are more than 1 features
-    for lck in lcks:
-        try:
+def reroll(self):
+    try:
+        # Use the name of the sender to check locks and set table
+        table = self.sender().objectName()[8:]
+        target_type = self.sender().objectName()[6]
+        rx = QtCore.QRegExp("lck_"+table+".[0-9]|lck_"+table+"\\b")
+        lcks = self.findChildren(QtWidgets.QCheckBox, rx) # in case there are more than 1 features
+        for lck in lcks:
             if not lck.isChecked():
-                if target_type == 'PlainText':
-                    target = self.findChild(QtWidgets.QPlainTextEdit, lck.objectName().replace('lck','txt'))
+                if target_type == 't':
+                    target = self.findChild(QtWidgets.QPlainTextEdit, lck.objectName().replace('lck','tx'))
                     results = roll_query(table, 'value')
                     txt = results[0]
                     target.clear()
                     target.appendPlainText(txt)
-                elif target_type == 'ComboBox':
+                elif target_type == 'd':
                     target = self.findChild(QtWidgets.QComboBox, lck.objectName().replace('lck','cb'))
                     results = roll_query(table, 'rowid')
                     rowid = results[0]-1 #sqlite is 1 based, Qt5 is 0 based
                     target.setCurrentIndex(rowid)
-            else:
-                print(lck.objectName(), "is locked, not updating")
-        except Exception as e:
-            print("Error received:", e)
-            warning_popup(e)
+            #else:
+            #    print(lck.objectName(), "is locked, not updating")
+    except Exception as e:
+        warning_popup("Error received:", e)
 
 def reroll_all(self):
-    rx = QtCore.QRegExp("btn_rr_.*")
+    rx = QtCore.QRegExp("btn_rr[a-z]_.*")
     btns = self.findChildren(QtWidgets.QPushButton, rx)
     for btn in btns:
         btn.click()
