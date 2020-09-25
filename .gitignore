@@ -3,5 +3,8 @@
 
 # Jupyter
 RSMaker/.ipynb_checkpoints
-RSMaker/I_Help.ipynb
+RSMaker/Launch_Jupyter_Lab.bat
+
+# python cache
 RSMaker/__pycache__
+RSMaker/QTemplates/__pycache__

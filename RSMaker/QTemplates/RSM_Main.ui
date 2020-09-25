@@ -14,7 +14,7 @@
    <string>RPG Random Session Maker</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources/QtResources.qrc">
+   <iconset resource="QtResources.qrc">
     <normaloff>:/icons/5e_logo_dark_256.bmp</normaloff>:/icons/5e_logo_dark_256.bmp</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -1386,31 +1386,57 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_gen_chamber">
+   <widget class="QGroupBox" name="box_chambers">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>40</y>
+      <width>271</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Chambers</string>
+    </property>
+    <widget class="QPushButton" name="btn_gen_chamber">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Generate Chamber</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="box_passages">
     <property name="geometry">
      <rect>
       <x>720</x>
-      <y>20</y>
-      <width>101</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Generate Chamber</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btn_gen_passage">
-    <property name="geometry">
-     <rect>
-      <x>730</x>
       <y>280</y>
-      <width>101</width>
-      <height>23</height>
+      <width>251</width>
+      <height>181</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Generate Passage</string>
+    <property name="title">
+     <string>Passages</string>
     </property>
+    <widget class="QPushButton" name="btn_gen_passage">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Generate Passage</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1530,7 +1556,7 @@
   </action>
  </widget>
  <resources>
-  <include location="resources/QtResources.qrc"/>
+  <include location="QtResources.qrc"/>
  </resources>
  <connections/>
 </ui>

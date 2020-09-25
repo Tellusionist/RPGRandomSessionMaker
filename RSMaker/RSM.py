@@ -4,13 +4,18 @@ from random import randint
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox, QMainWindow
 
+from QTemplates import RSM_Main
 
-class MainWindow(QMainWindow):
-    def __init__(self, *args, obj=None, **kwargs):
-        super(MainWindow, self).__init__(*args, **kwargs)
-        uic.loadUi('./QTemplates/RSM_Main.ui', self)
+
+class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
+    #def __init__(self, *args, obj=None, **kwargs):        
+    #    super(MainWindow, self).__init__(*args, **kwargs)
+    #    uic.loadUi('RSM_Main.ui', self)
+    #    self.initial_setup()
+    def __init__(self, parent=None):
+        super(MainWindow, self).__init__(parent)
+        self.setupUi(self)
         self.initial_setup()
-
 
     def initial_setup(self):
         _translate = QtCore.QCoreApplication.translate

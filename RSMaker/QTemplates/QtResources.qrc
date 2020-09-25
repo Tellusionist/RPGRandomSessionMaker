@@ -1,5 +1,6 @@
 <RCC>
-  <qresource prefix="">
+  <qresource>
     <file>icons/5e_logo_dark_256.bmp</file>
+    <file>icons/Paladin.png</file>
   </qresource>
 </RCC>
