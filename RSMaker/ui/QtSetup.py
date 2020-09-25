@@ -101,7 +101,7 @@ def reroll(self, target_type='PlainText'):
                 print(lck.objectName(), "is locked, not updating")
         except Exception as e:
             print("Error received:", e)
-            self.warning_popup(e)
+            warning_popup(e)
 
 def reroll_all(self):
     rx = QtCore.QRegExp("btn_rr_.*")
