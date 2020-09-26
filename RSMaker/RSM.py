@@ -2,10 +2,11 @@ import sys
 from random import randint
 
 from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import QMessageBox, QMainWindow
+from PyQt5.QtWidgets import QMessageBox, QMainWindow, QOpenGLWidget
 
 from QTemplates import RSM_Main, Chamber
-from ui import QtSetup
+from ui import QtSetup, GLMap
+
 
 
 class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
@@ -28,7 +29,12 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         self.chamber_btn_y_limit = 201
         self.chamber_id = 0
 
+        # Map Stuff
+        self.gl_map = GLMap.MapWidget(self.centralwidget)
+        self.gl_map.setGeometry(QtCore.QRect(710, 330, 300, 300))
+        self.gl_map.setObjectName("gl_map")
 
+        
 
     # custom functions for this window
     def new_chamber(self):
@@ -69,12 +75,14 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
             print("Error received:", e)
             QtSetup.warning_popup(e)
 
+    
 
 class ChamberWindow(QMainWindow, Chamber.Ui_MainWindow):
     def __init__(self, parent=None):
         super(ChamberWindow, self).__init__(parent)
         self.setupUi(self)
         QtSetup.generic_setup(self)
+    
 
 if __name__ == "__main__":  
     # load Ui

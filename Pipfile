@@ -9,6 +9,8 @@ pylint = "*"
 
 [packages]
 pyqt5 = "*"
+pyopengl = "*"
+pyopengl-accelerate = "*"
 
 [requires]
 python_version = "3.8"
