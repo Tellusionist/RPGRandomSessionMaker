@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QMessageBox, QMainWindow, QOpenGLWidget
 from QTemplates import RSM_Main, Chamber
 from ui import QtSetup, GLMap
 
-
+from PyQt5.QtOpenGL import QGL, QGLFormat, QGLWidget
 
 class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
     def __init__(self, parent=None):
@@ -30,11 +30,40 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         self.chamber_id = 0
 
         # Map Stuff
-        self.gl_map = GLMap.MapWidget(self.centralwidget)
-        self.gl_map.setGeometry(QtCore.QRect(710, 330, 300, 300))
-        self.gl_map.setObjectName("gl_map")
-
         
+        
+        # print('creating widget')
+        # self.gl_map = GLMap.MapWidSimpleViewerget(self.centralwidget)
+        # print('Changing geometry')
+        # self.gl_map.setGeometry(QtCore.QRect(710, 330, 300, 300))
+        # print('Updating name')
+        # self.gl_map.setObjectName("gl_map")
+        # #print('Calling update from RSM')
+        # #self.gl_map.update()
+        # #print('Calling initalize')
+        # #self.gl_map.initializeGL()
+        # #print('Calling update')
+        # #self.gl_map.update()
+        # #print('Calling cube from RSM')
+        # #self.gl_map.makeCurrent()
+        # #self.gl_map.cube()
+        # #self.gl_map.show()
+        
+        viewer = GLMap.MapWidget(self.centralwidget)
+        viewer.resize_cb.connect( GLMap.resize )
+        viewer.initialize_cb.connect( GLMap.initialize )
+        viewer.render_cb.connect( GLMap.render )
+
+        viewer.setGeometry(QtCore.QRect(710, 330, 300, 300))
+        viewer.setMouseTracking(True)
+
+        # keyboard & mouse interactions
+        viewer.key_press_cb.connect( GLMap.key_press )
+        viewer.key_release_cb.connect( GLMap.key_release )
+        viewer.mouse_press_cb.connect( GLMap.mouse_press )
+        viewer.mouse_release_cb.connect( GLMap.mouse_release )
+        viewer.mouse_move_cb.connect( GLMap.mouse_move )
+        viewer.mouse_wheel_cb.connect( GLMap.mouse_wheel )
 
     # custom functions for this window
     def new_chamber(self):
