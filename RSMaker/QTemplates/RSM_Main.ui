@@ -68,6 +68,9 @@
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>cb_DungeonType</cstring>
+    </property>
    </widget>
    <widget class="QComboBox" name="cb_DungeonType">
     <property name="geometry">
@@ -129,6 +132,9 @@
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>cb_Environment</cstring>
+    </property>
    </widget>
    <widget class="QCheckBox" name="lck_Environment">
     <property name="geometry">
@@ -170,6 +176,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+    <property name="buddy">
+     <cstring>tx_StartArea</cstring>
     </property>
    </widget>
    <widget class="QCheckBox" name="lck_StartArea">
@@ -252,6 +261,9 @@
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>tx_Noise</cstring>
+    </property>
    </widget>
    <widget class="QPushButton" name="btn_rrt_Noise">
     <property name="geometry">
@@ -309,6 +321,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
+    <property name="buddy">
+     <cstring>tx_Air</cstring>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_rrt_Air">
@@ -368,6 +383,9 @@
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>tx_Odor</cstring>
+    </property>
    </widget>
    <widget class="QPlainTextEdit" name="tx_Odor">
     <property name="geometry">
@@ -425,6 +443,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="buddy">
+     <cstring>tx_Feature_1</cstring>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="tx_Feature_1">
@@ -648,6 +669,9 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>tx_Furnish_1</cstring>
+    </property>
    </widget>
    <widget class="QCheckBox" name="lck_Furnish_1">
     <property name="geometry">
@@ -762,6 +786,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="buddy">
+     <cstring>tx_Furnish_Utensil_1</cstring>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="tx_Furnish_Utensil_2">
@@ -899,6 +926,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="buddy">
+     <cstring>tx_Book_1</cstring>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="tx_Book_2">
@@ -1076,6 +1106,9 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>tx_Container_Contents_1</cstring>
+    </property>
    </widget>
    <widget class="QPlainTextEdit" name="tx_Container_Contents_3">
     <property name="geometry">
@@ -1177,6 +1210,9 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+    <property name="buddy">
+     <cstring>tx_Furnish_Mage_1</cstring>
     </property>
    </widget>
    <widget class="QCheckBox" name="lck_Furnish_Mage_3">
@@ -1385,6 +1421,9 @@
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="buddy">
+     <cstring>tx_Furnish_Religous_1</cstring>
+    </property>
    </widget>
    <widget class="QGroupBox" name="box_chambers">
     <property name="geometry">
@@ -1423,6 +1462,19 @@
     </property>
     <property name="text">
      <string>Show chamber when generating</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_draw">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>290</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Draw Rect</string>
     </property>
    </widget>
   </widget>
@@ -1542,6 +1594,78 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>btn_all_rr</tabstop>
+  <tabstop>lck_DungeonType</tabstop>
+  <tabstop>cb_DungeonType</tabstop>
+  <tabstop>lck_Environment</tabstop>
+  <tabstop>cb_Environment</tabstop>
+  <tabstop>lck_StartArea</tabstop>
+  <tabstop>tx_StartArea</tabstop>
+  <tabstop>lck_Noise</tabstop>
+  <tabstop>tx_Noise</tabstop>
+  <tabstop>lck_Air</tabstop>
+  <tabstop>tx_Air</tabstop>
+  <tabstop>lck_Odor</tabstop>
+  <tabstop>tx_Odor</tabstop>
+  <tabstop>lck_Feature_1</tabstop>
+  <tabstop>tx_Feature_1</tabstop>
+  <tabstop>lck_Feature_2</tabstop>
+  <tabstop>tx_Feature_2</tabstop>
+  <tabstop>lck_Feature_3</tabstop>
+  <tabstop>tx_Feature_3</tabstop>
+  <tabstop>lck_Furnish_Utensil_1</tabstop>
+  <tabstop>tx_Furnish_Utensil_1</tabstop>
+  <tabstop>lck_Furnish_Utensil_2</tabstop>
+  <tabstop>tx_Furnish_Utensil_2</tabstop>
+  <tabstop>lck_Furnish_Utensil_3</tabstop>
+  <tabstop>tx_Furnish_Utensil_3</tabstop>
+  <tabstop>lck_Book_1</tabstop>
+  <tabstop>tx_Book_1</tabstop>
+  <tabstop>lck_Book_2</tabstop>
+  <tabstop>tx_Book_2</tabstop>
+  <tabstop>lck_Book_3</tabstop>
+  <tabstop>tx_Book_3</tabstop>
+  <tabstop>lck_Container_Contents_1</tabstop>
+  <tabstop>tx_Container_Contents_1</tabstop>
+  <tabstop>lck_Container_Contents_2</tabstop>
+  <tabstop>tx_Container_Contents_2</tabstop>
+  <tabstop>lck_Container_Contents_3</tabstop>
+  <tabstop>tx_Container_Contents_3</tabstop>
+  <tabstop>lck_Furnish_1</tabstop>
+  <tabstop>tx_Furnish_1</tabstop>
+  <tabstop>lck_Furnish_2</tabstop>
+  <tabstop>tx_Furnish_2</tabstop>
+  <tabstop>lck_Furnish_3</tabstop>
+  <tabstop>tx_Furnish_3</tabstop>
+  <tabstop>lck_Furnish_Mage_1</tabstop>
+  <tabstop>tx_Furnish_Mage_1</tabstop>
+  <tabstop>lck_Furnish_Mage_2</tabstop>
+  <tabstop>tx_Furnish_Mage_2</tabstop>
+  <tabstop>lck_Furnish_Mage_3</tabstop>
+  <tabstop>tx_Furnish_Mage_3</tabstop>
+  <tabstop>lck_Furnish_Religous_1</tabstop>
+  <tabstop>tx_Furnish_Religous_1</tabstop>
+  <tabstop>lck_Furnish_Religous_2</tabstop>
+  <tabstop>tx_Furnish_Religous_2</tabstop>
+  <tabstop>lck_Furnish_Religous_3</tabstop>
+  <tabstop>tx_Furnish_Religous_3</tabstop>
+  <tabstop>btn_rrd_DungeonType</tabstop>
+  <tabstop>btn_rrd_Environment</tabstop>
+  <tabstop>btn_rrt_StartArea</tabstop>
+  <tabstop>btn_rrt_Noise</tabstop>
+  <tabstop>btn_rrt_Air</tabstop>
+  <tabstop>btn_rrt_Odor</tabstop>
+  <tabstop>btn_rrt_Feature</tabstop>
+  <tabstop>btn_rrt_Furnish_Utensil</tabstop>
+  <tabstop>btn_rrt_Book</tabstop>
+  <tabstop>btn_rrt_Container_Contents</tabstop>
+  <tabstop>btn_rrt_Furnish</tabstop>
+  <tabstop>btn_rrt_Furnish_Mage</tabstop>
+  <tabstop>btn_rrt_Furnish_Religous</tabstop>
+  <tabstop>btn_gen_chamber</tabstop>
+  <tabstop>b_ShowChamber</tabstop>
+ </tabstops>
  <resources>
   <include location="QtResources.qrc"/>
  </resources>

@@ -1,7 +1,7 @@
 import sys
-from random import randint
+from random import randint, randrange
 
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtCore, QtWidgets, QtGui
 from PyQt5.QtWidgets import QMessageBox, QMainWindow, QOpenGLWidget
 
 from QTemplates import RSM_Main, Chamber
@@ -29,26 +29,8 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         self.chamber_btn_y_limit = 201
         self.chamber_id = 0
 
-        # Map Stuff
-        
-        
-        # print('creating widget')
-        # self.gl_map = GLMap.MapWidSimpleViewerget(self.centralwidget)
-        # print('Changing geometry')
-        # self.gl_map.setGeometry(QtCore.QRect(710, 330, 300, 300))
-        # print('Updating name')
-        # self.gl_map.setObjectName("gl_map")
-        # #print('Calling update from RSM')
-        # #self.gl_map.update()
-        # #print('Calling initalize')
-        # #self.gl_map.initializeGL()
-        # #print('Calling update')
-        # #self.gl_map.update()
-        # #print('Calling cube from RSM')
-        # #self.gl_map.makeCurrent()
-        # #self.gl_map.cube()
-        # #self.gl_map.show()
-        
+        '''
+        # Fancy Map Stuff 
         viewer = GLMap.MapWidget(self.centralwidget)
         viewer.resize_cb.connect( GLMap.resize )
         viewer.initialize_cb.connect( GLMap.initialize )
@@ -64,6 +46,23 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         viewer.mouse_release_cb.connect( GLMap.mouse_release )
         viewer.mouse_move_cb.connect( GLMap.mouse_move )
         viewer.mouse_wheel_cb.connect( GLMap.mouse_wheel )
+        '''
+
+        self.canvas = Canvas(self)
+        self.canvas.setGeometry(QtCore.QRect(710, 340, 300, 220))
+
+        self.btn_draw.clicked.connect(self.add_rectangle)
+        
+    def add_rectangle(self):
+        w = self.canvas.width()
+        h = self.canvas.height()
+        x0, y0 = randrange(w), randrange(h)
+        x1, y1 = randrange(w), randrange(h)
+
+        shape = QtCore.QRect(min(x0,x1), min(y0,y1), abs(x0-x1), abs(y0-y1))
+        color = QtGui.QColor.fromRgb(*(randrange(256) for i in range(3)), 180)
+        self.canvas.add_rectangle(shape, color)
+        
 
     # custom functions for this window
     def new_chamber(self):
@@ -111,7 +110,30 @@ class ChamberWindow(QMainWindow, Chamber.Ui_MainWindow):
         super(ChamberWindow, self).__init__(parent)
         self.setupUi(self)
         QtSetup.generic_setup(self)
-    
+
+class Canvas(QtWidgets.QWidget):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.rectangles = []
+
+    def add_rectangle(self, rect, color):
+        self.rectangles.append((rect, color))
+        self.update()
+
+    def paintEvent(self, event):
+        painter = QtGui.QPainter(self)
+        brush = QtGui.QBrush(QtCore.Qt.white)
+        painter.setBrush(brush)
+        painter.drawRect(event.rect())
+
+        pen = QtGui.QPen()
+        pen.setWidth(3)
+        for rect, color in self.rectangles:
+            pen.setColor(color)
+            painter.setPen(pen)
+            brush.setColor(color)
+            painter.setBrush(brush)
+            painter.drawRect(rect)
 
 if __name__ == "__main__":  
     # load Ui
