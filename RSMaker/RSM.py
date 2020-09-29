@@ -29,11 +29,6 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         self.chamber_btn_y_limit = 201
         self.chamber_id = 0
 
-        # self.btn_in_the_way = QtWidgets.QPushButton(self.centralwidget)
-        # self.btn_in_the_way.setGeometry(QtCore.QRect(630, 670, 75, 23))
-        # self.btn_in_the_way.setObjectName("btn_in_the_way")
-        # self.btn_in_the_way.setText(QtCore.QCoreApplication.translate("MainWindow", "Hallo"))
-        # self.btn_in_the_way.clicked.connect(self.addbox)
 
         # Fancy Map Stuff
         # Store a list of scene objects
@@ -61,12 +56,7 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         self.viewer.mouse_move_cb.connect( GLMap.mouse_move )
         self.viewer.mouse_wheel_cb.connect( GLMap.mouse_wheel )
         
-        
-        #self.btn_draw.clicked.connect(self.add_rectangle)
-        #self.canvas = Canvas(self)
-        #self.canvas.setGeometry(QtCore.QRect(710, 340, 300, 220))
-
-        
+                
     
     # override the mouse wheelEvent to check and send event to OpenGL widget
     def wheelEvent(self, evt):
