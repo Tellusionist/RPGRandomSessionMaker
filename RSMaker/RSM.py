@@ -29,39 +29,96 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         self.chamber_btn_y_limit = 201
         self.chamber_id = 0
 
-        '''
-        # Fancy Map Stuff 
-        viewer = GLMap.MapWidget(self.centralwidget)
-        viewer.resize_cb.connect( GLMap.resize )
-        viewer.initialize_cb.connect( GLMap.initialize )
-        viewer.render_cb.connect( GLMap.render )
+        # self.btn_in_the_way = QtWidgets.QPushButton(self.centralwidget)
+        # self.btn_in_the_way.setGeometry(QtCore.QRect(630, 670, 75, 23))
+        # self.btn_in_the_way.setObjectName("btn_in_the_way")
+        # self.btn_in_the_way.setText(QtCore.QCoreApplication.translate("MainWindow", "Hallo"))
+        # self.btn_in_the_way.clicked.connect(self.addbox)
 
-        viewer.setGeometry(QtCore.QRect(710, 330, 300, 300))
-        viewer.setMouseTracking(True)
+        # Fancy Map Stuff
+        # Store a list of scene objects
+        self.scene_objs = [] 
+        
+        self.viewer = GLMap.MapWidget(self.centralwidget)
+        self.viewer.resize_cb.connect( GLMap.resize )
+        self.viewer.initialize_cb.connect( GLMap.initialize )
+        #viewer.render_cb.connect( GLMap.render )
+        self.viewer.renderbox_cb.connect( GLMap.box )
+        self.btn_drawbox.clicked.connect(self.addbox)
+        
+        
+
+        self.viewer.setGeometry(QtCore.QRect(40, 600, 920, 240))
+        self.viewer.setMouseTracking(True)
+
+        
 
         # keyboard & mouse interactions
-        viewer.key_press_cb.connect( GLMap.key_press )
-        viewer.key_release_cb.connect( GLMap.key_release )
-        viewer.mouse_press_cb.connect( GLMap.mouse_press )
-        viewer.mouse_release_cb.connect( GLMap.mouse_release )
-        viewer.mouse_move_cb.connect( GLMap.mouse_move )
-        viewer.mouse_wheel_cb.connect( GLMap.mouse_wheel )
-        '''
-
-        self.canvas = Canvas(self)
-        self.canvas.setGeometry(QtCore.QRect(710, 340, 300, 220))
-
-        self.btn_draw.clicked.connect(self.add_rectangle)
+        self.viewer.key_press_cb.connect( GLMap.key_press )
+        self.viewer.key_release_cb.connect( GLMap.key_release )
+        self.viewer.mouse_press_cb.connect( GLMap.mouse_press )
+        self.viewer.mouse_release_cb.connect( GLMap.mouse_release )
+        self.viewer.mouse_move_cb.connect( GLMap.mouse_move )
+        self.viewer.mouse_wheel_cb.connect( GLMap.mouse_wheel )
         
-    def add_rectangle(self):
-        w = self.canvas.width()
-        h = self.canvas.height()
-        x0, y0 = randrange(w), randrange(h)
-        x1, y1 = randrange(w), randrange(h)
+        
+        #self.btn_draw.clicked.connect(self.add_rectangle)
+        #self.canvas = Canvas(self)
+        #self.canvas.setGeometry(QtCore.QRect(710, 340, 300, 220))
 
-        shape = QtCore.QRect(min(x0,x1), min(y0,y1), abs(x0-x1), abs(y0-y1))
-        color = QtGui.QColor.fromRgb(*(randrange(256) for i in range(3)), 180)
-        self.canvas.add_rectangle(shape, color)
+        
+    
+    # override the mouse wheelEvent to check and send event to OpenGL widget
+    def wheelEvent(self, evt):
+        if self.viewer.underMouse():
+            self.viewer.mouse_wheel_cb.emit(evt, self.viewer, self.scene_objs)
+        
+    def addbox(self):
+        base_vertices = (
+            ( 1, -1, -1),
+            ( 1,  1, -1),
+            (-1,  1, -1),
+            (-1, -1, -1)
+        )
+        
+        offest_x = randint(-10,10)
+        offest_y = randint(-10,10)
+
+        new_vertices = []
+        for base_v in base_vertices:
+            new_v = []
+            new_x = base_v[0] + offest_x
+            new_y = base_v[1] + offest_y
+            new_z = base_v[2]
+            new_v.append(new_x)
+            new_v.append(new_y)
+            new_v.append(new_z)
+            
+            new_vertices.append(new_v)
+
+        
+        base_edges = edges = (
+            (0,1),
+            (0,3),
+            (2,1),
+            (2,3)
+        )
+
+        new_obj = {"vertices":new_vertices, "edges":base_edges}
+
+        self.scene_objs.append(new_obj)
+        self.viewer.renderbox_cb.emit(self.viewer, self.scene_objs)
+
+
+    # def add_rectangle(self):
+    #     w = self.canvas.width()
+    #     h = self.canvas.height()
+    #     x0, y0 = randrange(w), randrange(h)
+    #     x1, y1 = randrange(w), randrange(h)
+
+    #     shape = QtCore.QRect(min(x0,x1), min(y0,y1), abs(x0-x1), abs(y0-y1))
+    #     color = QtGui.QColor.fromRgb(*(randrange(256) for i in range(3)), 180)
+    #     self.canvas.add_rectangle(shape, color)
         
 
     # custom functions for this window

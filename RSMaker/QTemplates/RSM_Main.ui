@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1033</width>
-    <height>609</height>
+    <height>904</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1464,17 +1464,17 @@
      <string>Show chamber when generating</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_draw">
+   <widget class="QPushButton" name="btn_drawbox">
     <property name="geometry">
      <rect>
-      <x>830</x>
-      <y>290</y>
+      <x>550</x>
+      <y>560</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>Draw Rect</string>
+     <string>Draw Box</string>
     </property>
    </widget>
   </widget>
