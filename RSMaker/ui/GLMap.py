@@ -79,6 +79,14 @@ def initialize():
     glLoadIdentity() # not sure
     gluPerspective( 45.0, WIDGET_ASPECT, 0.1, 50.0 ) # FOC, aspect ratio, clipping plane
     glTranslate(0.0, 0.0, -15) # move camera
+    
+    # setup a frame buffer for object detection
+    framebuffer = glGenFramebuffers(1)
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer) # Not doing GL_FRAMEBUFFER since just reading
+
+    # # we'll use a color buffer to make object picking easier
+    colorbuffer = glGenRenderbuffers (1)
+    glBindRenderbuffer(GL_RENDERBUFFER, colorbuffer)
 
     # glMatrixMode( GL_MODELVIEW ) # not sure
     # glLoadIdentity() # not sure
@@ -114,18 +122,20 @@ def box(GLWidget, scene_objs ):
     print('Boxing')
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ) # must have, not sure why
     
-    glBegin(GL_LINES)
     for obj in scene_objs:
+        glBegin(GL_POLYGON)
         for edge in obj["edges"]:
             for vertex in edge:
                 glVertex3fv(obj["vertices"][vertex])
-    glEnd()
+        glEnd()
     GLWidget.update()
 
 
 def mouse_move( evt ):
     pass
     #print('Mouse move {}: [{},{}]'.format(evt.button(),evt.x(),evt.y()) )
+    #evt.x()
+    #evt.y()
 
 
 def mouse_wheel( evt, GLWidget, scene_objs ):

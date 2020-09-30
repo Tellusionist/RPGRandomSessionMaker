@@ -64,15 +64,43 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
             self.viewer.mouse_wheel_cb.emit(evt, self.viewer, self.scene_objs)
         
     def addbox(self):
-        base_vertices = (
+        square_vertices = (
             ( 1, -1, -1),
             ( 1,  1, -1),
             (-1,  1, -1),
             (-1, -1, -1)
         )
+
+        square_edges = edges = (
+            (0,1),
+            (0,3),
+            (2,1),
+            (2,3)
+        )
+
+        triangle_vertices = (
+            ( 1, -1, -1),
+            ( 1,  1, -1),
+            (-1,  1, -1)
+        )
+
+        triangle_edges = (
+            (0,1),
+            (0,2),
+            (2,1)
+        )
+
+        t = randint(0, 20)
+        if t >= 15:
+            base_vertices = triangle_vertices
+            base_edges = triangle_edges
+        else:
+            base_vertices = square_vertices
+            base_edges = square_edges
         
-        offest_x = randint(-10,10)
-        offest_y = randint(-10,10)
+                
+        offest_x = randint(-20,20)
+        offest_y = randint(-8,8)
 
         new_vertices = []
         for base_v in base_vertices:
@@ -87,12 +115,7 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
             new_vertices.append(new_v)
 
         
-        base_edges = edges = (
-            (0,1),
-            (0,3),
-            (2,1),
-            (2,3)
-        )
+        
 
         new_obj = {"vertices":new_vertices, "edges":base_edges}
 
