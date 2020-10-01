@@ -37,6 +37,7 @@ class MapWidget(QtOpenGL.QGLWidget):
 
         self.gear1 = 0
         self.gear1Rot = 0
+        self.boxinit = False
     
         
         self.lastPos = QtCore.QPoint()
@@ -46,7 +47,7 @@ class MapWidget(QtOpenGL.QGLWidget):
         # timer.start(20)
 
     def setXRotation(self, angle):
-        self.normalizeAngle(angle)
+        #self.normalizeAngle(angle)
 
         if angle != self.xRot:
             self.xRot = angle
@@ -54,7 +55,7 @@ class MapWidget(QtOpenGL.QGLWidget):
             self.update()
 
     def setYRotation(self, angle):
-        self.normalizeAngle(angle)
+        #self.normalizeAngle(angle)
 
         if angle != self.yRot:
             self.yRot = angle
@@ -62,7 +63,7 @@ class MapWidget(QtOpenGL.QGLWidget):
             self.update()
 
     def setZRotation(self, angle):
-        self.normalizeAngle(angle)
+        #self.normalizeAngle(angle)
 
         if angle != self.zRot:
             self.zRot = angle
@@ -74,17 +75,16 @@ class MapWidget(QtOpenGL.QGLWidget):
         dx = event.x() - self.lastPos.x()
         dy = event.y() - self.lastPos.y()
 
-        if event.buttons() & QtCore.Qt.LeftButton:
-            self.setXRotation(self.xRot + 8 * dy)
-            self.setYRotation(self.yRot + 8 * dx)
-        elif event.buttons() & QtCore.Qt.RightButton:
-            self.setXRotation(self.xRot + 8 * dy)
-            self.setZRotation(self.zRot + 8 * dx)
+
+        if event.buttons() & QtCore.Qt.RightButton:
+            self.setXRotation(dx/20)
+            self.setYRotation(dy/20)
 
         self.lastPos = event.pos()
 
     def mouseWheelEvent(self, evt):
         self.mouse_wheel_cb.emit(evt)
+
         
     def mousePressEvent( self, event ):
         #self.mouse_press_cb.emit( evt )
@@ -101,30 +101,53 @@ class MapWidget(QtOpenGL.QGLWidget):
 
     def initializeGL(self):
         #self.initialize_cb.emit()
-        lightPos = (5.0, 5.0, 10.0, 1.0)
-        reflectance1 = (0.8, 0.1, 0.0, 1.0)
-        reflectance2 = (0.0, 0.8, 0.2, 1.0)
-        reflectance3 = (0.2, 0.2, 1.0, 1.0)
+        print('InitializeGL')
+        # lightPos = (5.0, 5.0, 10.0, 1.0)
+        # reflectance1 = (0.8, 0.1, 0.0, 1.0)
+        # reflectance2 = (0.0, 0.8, 0.2, 1.0)
+        # reflectance3 = (0.2, 0.2, 1.0, 1.0)
 
-        glLightfv(GL_LIGHT0, GL_POSITION, lightPos)
-        glEnable(GL_LIGHTING)
-        glEnable(GL_LIGHT0)
-        glEnable(GL_DEPTH_TEST)
+        # glLightfv(GL_LIGHT0, GL_POSITION, lightPos)
+        # glEnable(GL_LIGHTING)
+        # glEnable(GL_LIGHT0)
+        # glEnable(GL_DEPTH_TEST)
 
-        self.gear1 = self.makeGear(reflectance1, 1.0, 4.0, 1.0, 0.7, 20)
+        # glMatrixMode( GL_PROJECTION ) # not sure
+        # glLoadIdentity() # not sure
+        # gluPerspective( 45.0, WIDGET_ASPECT, 0.1, 50.0 ) # FOV, aspect ratio, clipping plane
+        # glTranslate(0.0, 0.0, -15) # move camera
 
-        gl.glEnable(gl.GL_NORMALIZE)
-        gl.glClearColor(0.0, 0.0, 0.0, 1.0)
+        #self.gear1 = self.makeGear(reflectance1, 1.0, 4.0, 1.0, 0.7, 20)
+
+        square_vertices = (
+            ( 1, -1, -1),
+            ( 1,  1, -1),
+            (-1,  1, -1),
+            (-1, -1, -1)
+        )
+
+        square_edges = edges = (
+            (0,1),
+            (0,3),
+            (2,1),
+            (2,3)
+        )
+
+        self.box1 = self.makeBox(square_vertices, square_edges)
+
+        #gl.glEnable(gl.GL_NORMALIZE)
+        #gl.glClearColor(0.0, 0.0, 0.0, 1.0)
 
     def resizeGL(self, width, height):
+        print('resizeGL')
         # if height == 0: height = 1
         # self.resize_cb.emit(width,height)
         side = min(width, height)
         if side < 0:
             return
 
-        glViewport((width - side) // 2, (height - side) // 2, side, side)
-
+        #glViewport((width - side) // 2, (height - side) // 2, side, side)
+        glViewport(0, 0, 920, 240)
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
         glFrustum(-1.0, +1.0, -1.0, 1.0, 5.0, 60.0)
@@ -136,21 +159,22 @@ class MapWidget(QtOpenGL.QGLWidget):
         print('Paint')
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-        glPushMatrix()
-        glRotated(self.xRot / 16.0, 1.0, 0.0, 0.0)
-        glRotated(self.yRot / 16.0, 0.0, 1.0, 0.0)
-        glRotated(self.zRot / 16.0, 0.0, 0.0, 1.0)
+        #glPushMatrix()
+        # glRotated(self.xRot / 16.0, 1.0, 0.0, 0.0)
+        # glRotated(self.yRot / 16.0, 0.0, 1.0, 0.0)
+        # glRotated(self.zRot / 16.0, 0.0, 0.0, 1.0)
         
-        #self.box
-        self.drawGear(self.gear1, -3.0, -2.0, 0.0, self.gear1Rot / 16.0)
-        # self.drawGear(self.gear2, +3.1, -2.0, 0.0,
-        #         -2.0 * (self.gear1Rot / 16.0) - 9.0)
+        glTranslated(self.xRot, 0.0, 0.0)
+        glTranslated( 0.0, -self.yRot, 0.0)
+        glTranslated( 0.0, 0.0, self.zRot)
 
-        glRotated(+90.0, 1.0, 0.0, 0.0)
-        # self.drawGear(self.gear3, -3.1, -1.8, -2.2,
-        #         +2.0 * (self.gear1Rot / 16.0) - 2.0)
+        #self.drawBox(self.box1, -3.0, -2.0, 0.0)
+        if not self.boxinit:
+            self.drawBox(self.box1, 0.0, 0.0, 0.0)
 
-        glPopMatrix()
+        #glTranslated(1.0, 0.0, 0.0)
+
+        #glPopMatrix()
         #self.render_cb.emit()
 
     def xRotation(self):
@@ -163,101 +187,36 @@ class MapWidget(QtOpenGL.QGLWidget):
         return self.zRot
 
     def normalizeAngle(self, angle):
-        while (angle < 0):
-            angle += 360 * 16
+        # while (angle < 0):
+        #     angle += 360 * 16
 
-        while (angle > 360 * 16):
-            angle -= 360 * 16
+        # while (angle > 360 * 16):
+        #     angle -= 360 * 16
+        pass
 
-    def makeGear(self, reflectance, innerRadius, outerRadius, thickness, toothSize, toothCount):
+    def makeBox(self, vertices, edges):
+        print('Make box')
         list = glGenLists(1)
         glNewList(list, GL_COMPILE)
-        glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE,
-                reflectance)
 
-        r0 = innerRadius
-        r1 = outerRadius - toothSize / 2.0
-        r2 = outerRadius + toothSize / 2.0
-        delta = (2.0 * math.pi / toothCount) / 4.0
-        z = thickness / 2.0
-
-        glShadeModel(GL_FLAT)
-
-        for i in range(2):
-            if i == 0:
-                sign = +1.0
-            else:
-                sign = -1.0
-
-            glNormal3d(0.0, 0.0, sign)
-
-            glBegin(GL_QUAD_STRIP)
-
-            for j in range(toothCount+1):
-                angle = 2.0 * math.pi * j / toothCount
-                glVertex3d(r0 * math.cos(angle), r0 * math.sin(angle), sign * z)
-                glVertex3d(r1 * math.cos(angle), r1 * math.sin(angle), sign * z)
-                glVertex3d(r0 * math.cos(angle), r0 * math.sin(angle), sign * z)
-                glVertex3d(r1 * math.cos(angle + 3 * delta), r1 * math.sin(angle + 3 * delta), sign * z)
-
-            glEnd()
-
-            glBegin(GL_QUADS)
-
-            for j in range(toothCount):
-                angle = 2.0 * math.pi * j / toothCount
-                glVertex3d(r1 * math.cos(angle), r1 * math.sin(angle), sign * z)
-                glVertex3d(r2 * math.cos(angle + delta), r2 * math.sin(angle + delta), sign * z)
-                glVertex3d(r2 * math.cos(angle + 2 * delta), r2 * math.sin(angle + 2 * delta), sign * z)
-                glVertex3d(r1 * math.cos(angle + 3 * delta), r1 * math.sin(angle + 3 * delta), sign * z)
-
-            glEnd()
-
-        glBegin(GL_QUAD_STRIP)
-
-        for i in range(toothCount):
-            for j in range(2):
-                angle = 2.0 * math.pi * (i + (j / 2.0)) / toothCount
-                s1 = r1
-                s2 = r2
-
-                if j == 1:
-                    s1, s2 = s2, s1
-
-                glNormal3d(math.cos(angle), math.sin(angle), 0.0)
-                glVertex3d(s1 * math.cos(angle), s1 * math.sin(angle), +z)
-                glVertex3d(s1 * math.cos(angle), s1 * math.sin(angle), -z)
-
-                glNormal3d(s2 * math.sin(angle + delta) - s1 * math.sin(angle), s1 * math.cos(angle) - s2 * math.cos(angle + delta), 0.0)
-                glVertex3d(s2 * math.cos(angle + delta), s2 * math.sin(angle + delta), +z)
-                glVertex3d(s2 * math.cos(angle + delta), s2 * math.sin(angle + delta), -z)
-
-        glVertex3d(r1, 0.0, +z)
-        glVertex3d(r1, 0.0, -z)
-        glEnd()
-
-        glShadeModel(GL_SMOOTH)
-
-        glBegin(GL_QUAD_STRIP)
-
-        for i in range(toothCount+1):
-            angle = i * 2.0 * math.pi / toothCount
-            glNormal3d(-math.cos(angle), -math.sin(angle), 0.0)
-            glVertex3d(r0 * math.cos(angle), r0 * math.sin(angle), +z)
-            glVertex3d(r0 * math.cos(angle), r0 * math.sin(angle), -z)
-
+        glBegin(GL_POLYGON)
+        for edge in edges:
+            for vertex in edge:
+                glVertex3fv(vertices[vertex])
         glEnd()
 
         glEndList()
-
+        
         return list
 
-    def drawGear(self, gear, dx, dy, dz, angle):
+    def drawBox(self, box, dx, dy, dz):
+        print('drawbox')
         gl.glPushMatrix()
-        gl.glTranslated(dx, dy, dz)
-        gl.glRotated(angle, 0.0, 0.0, 1.0)
-        gl.glCallList(gear)
+        #gl.glTranslated(dx, dy, dz)
+        #gl.glRotated(angle, 0.0, 0.0, 1.0)
+        gl.glCallList(box)
         gl.glPopMatrix()
+
 
 
 import sys
@@ -313,19 +272,7 @@ def box(GLWidget, scene_objs ):
         glEnd()
     GLWidget.update()
 
-def makeBox(self, vertices, edges):
-    list = glGenLists(1)
-    glNewList(list, GL_COMPILE)
 
-    glBegin(GL_POLYGON)
-    for edge in edges:
-        for vertex in vertices:
-            glVertex3fv(vertices[vertex])
-    glEnd()
-
-    glEndList()
-    
-    return list
 
     
 
@@ -337,6 +284,7 @@ def mouse_move( evt ):
 
 
 def mouse_wheel( evt, GLWidget, scene_objs ):
+    print('Whee!')
     if evt.angleDelta().y() < 0:
         glTranslate(0.0, 0.0, -1)
     else:
@@ -355,11 +303,3 @@ def key_press( evt ):
 
 def key_release( evt ):
     print('Key release {}'.format(evt.key()) )
-
-def drawBox(self, box, dx, dy, dz, angle):
-        glPushMatrix()
-        glTranslated(dx, dy, dz)
-        glRotated(angle, 0.0, 0.0, 1.0)
-        glCallList(box)
-        glPopMatrix()
-    

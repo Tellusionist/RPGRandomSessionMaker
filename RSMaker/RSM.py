@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QMessageBox, QMainWindow, QOpenGLWidget
 
 from QTemplates import RSM_Main, Chamber
 from ui import QtSetup, GLMap
+from ui.map import MapWidget
 
 from PyQt5.QtOpenGL import QGL, QGLFormat, QGLWidget
 
@@ -30,38 +31,20 @@ class MainWindow(QMainWindow, RSM_Main.Ui_MainWindow):
         self.chamber_id = 0
 
 
-        # Fancy Map Stuff
         # Store a list of scene objects
         self.scene_objs = [] 
         
-        self.viewer = GLMap.MapWidget(self.centralwidget)
-        self.viewer.resize_cb.connect( GLMap.resize )
-        self.viewer.initialize_cb.connect( GLMap.initialize )
-        #viewer.render_cb.connect( GLMap.render )
-        self.viewer.renderbox_cb.connect( GLMap.box )
-        self.btn_drawbox.clicked.connect(self.addbox)
-        
-        
-
+        self.viewer = MapWidget(self.centralwidget)
         self.viewer.setGeometry(QtCore.QRect(40, 600, 920, 240))
-        self.viewer.setMouseTracking(True)
 
-        
 
-        # keyboard & mouse interactions
-        self.viewer.key_press_cb.connect( GLMap.key_press )
-        self.viewer.key_release_cb.connect( GLMap.key_release )
-        self.viewer.mouse_press_cb.connect( GLMap.mouse_press )
-        self.viewer.mouse_release_cb.connect( GLMap.mouse_release )
-        self.viewer.mouse_move_cb.connect( GLMap.mouse_move )
-        self.viewer.mouse_wheel_cb.connect( GLMap.mouse_wheel )
-        
                 
     
     # override the mouse wheelEvent to check and send event to OpenGL widget
     def wheelEvent(self, evt):
         if self.viewer.underMouse():
-            self.viewer.mouse_wheel_cb.emit(evt, self.viewer, self.scene_objs)
+            self.viewer.mouseWheelEvent(evt)
+
         
     def addbox(self):
         square_vertices = (
