@@ -20,6 +20,8 @@ class MapWidget(QtOpenGL.QGLWidget):
         self.clipNear = 5.0
         self.clipFar = 60.0
         self.zoomStep = 3.0
+        self.xPanMax = 30
+        self.yPanMax = 6
 
         self.boxinit = False
         
@@ -43,17 +45,31 @@ class MapWidget(QtOpenGL.QGLWidget):
     def mouseMoveEvent( self, event ):
         dx = event.x() - self.lastPos.x()
         dy = event.y() - self.lastPos.y()
-        
-        # need to normalize this somehow
-        # don't want to have to re-draw the verticies
-        # print('X:',dx,'Y:',dy)
-        # get current z position
-        # model = gl.glGetDoublev( gl.GL_MODELVIEW_MATRIX )
-        # z_curr = -model[3][2]
+       
+        # normalize speed based on current z position, 13 @ 40z seems good
+        model = gl.glGetDoublev( gl.GL_MODELVIEW_MATRIX )
+        z_curr = -model[3][2]
+        normalizer = (40/z_curr) *13
+
+        # get x and y for panning limitations
+        x_curr = model[3][0]
+        y_curr = model[3][1]
 
         if event.buttons() & QtCore.Qt.RightButton:
-            self.setXTranslation(dx/13)
-            self.setYTranslation(dy/13)
+            # limit x panning (doesn't scale currently)
+            if x_curr > self.xPanMax and dx >0:
+                dx = 0
+            elif x_curr < -self.xPanMax and dx <0:
+                dx = 0
+            
+            # limit y panning (doesn't scale currently)
+            if y_curr > self.yPanMax and dy <0:
+                dy = 0
+            elif y_curr < -self.yPanMax and dy >0:
+                dy = 0
+            
+            self.setXTranslation(dx/normalizer)
+            self.setYTranslation(dy/normalizer)
 
         self.lastPos = event.pos()
     
@@ -114,8 +130,8 @@ class MapWidget(QtOpenGL.QGLWidget):
         #model = gl.glGetDoublev( gl.GL_MODELVIEW_MATRIX )
         #print("model Z value:", str(model[3][2]))
 
-        #model = gl.glGetDoublev( gl.GL_MODELVIEW_MATRIX )
-        #print("{:.2f}".format(model[3][2]))
+        # model = gl.glGetDoublev( gl.GL_MODELVIEW_MATRIX )
+        # print("{:.2f}".format(model[3][2]))
         # print('#### MODEL MATRIX ####')
         # print("0\t1\t2\t3")
         # for p in model: 
@@ -129,9 +145,8 @@ class MapWidget(QtOpenGL.QGLWidget):
 
         # proj = gl.glGetDoublev( gl.GL_PROJECTION_MATRIX )
         # print('#### PROJECTION MATRIX ####')
-        
+        # print("0\t1\t2\3")
         # for p in proj:
-        #     print("0\t1\t2\3")
         #     print(
         #             "{:.2f}".format(p[0]),
         #             "{:.2f}".format(p[1]),
