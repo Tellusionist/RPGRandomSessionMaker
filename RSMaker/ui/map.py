@@ -1,6 +1,10 @@
 import math
 from PyQt5 import QtWidgets, QtCore, QtGui, QtOpenGL
 import OpenGL.GL as gl
+# references
+# http://jamesgregson.ca/pyqt5-pyopengl-example.html
+# https://github.com/baoboa/pyqt5/blob/master/examples/opengl/grabber.py
+
 
 class MapWidget(QtOpenGL.QGLWidget):
 
