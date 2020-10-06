@@ -1,6 +1,7 @@
 import math
 from PyQt5 import QtWidgets, QtCore, QtGui, QtOpenGL
 import OpenGL.GL as gl
+import OpenGL.GLU as glu
 # references
 # http://jamesgregson.ca/pyqt5-pyopengl-example.html
 # https://github.com/baoboa/pyqt5/blob/master/examples/opengl/grabber.py
@@ -45,6 +46,29 @@ class MapWidget(QtOpenGL.QGLWidget):
         self.zOff = offset
         self.zTranslationChanged.emit(offset)
         self.update()
+
+    def mousePressEvent(self, event):
+        if event.buttons() & QtCore.Qt.LeftButton:
+            matModelView = gl.glGetDoublev(gl.GL_MODELVIEW_MATRIX)
+            matProjection = gl.glGetDoublev(gl.GL_PROJECTION_MATRIX)
+            viewPort = gl.glGetIntegerv(gl.GL_VIEWPORT)
+            mx = event.x()
+            my = event.y()
+            print("Mouse Coords:", mx, my)
+            
+            # Should return the normalize mouse start and end coords in worldspace
+            # not exactly following, prolly just should do the matrix mult manually
+            psx, psy, psz = glu.gluUnProject(mx, my, 0.0, matModelView, matProjection, viewPort)
+            pex, pey, pez = glu.gluUnProject(mx, my, self.clipFar, matModelView, matProjection, viewPort)
+
+            # Gets the correct color for box 1 without zoom
+            # I think I need to re-draw vs translate the view port?
+            read = gl.glReadPixels(mx, my, 1, 1, gl.GL_RGB, gl.GL_FLOAT )
+            r = read[0][0][0]
+            g = read[1][0][0]
+            b = read[2][0][0]
+            print("RGB:",r,g,b)
+
 
     def mouseMoveEvent( self, event ):
         dx = event.x() - self.lastPos.x()
@@ -106,6 +130,14 @@ class MapWidget(QtOpenGL.QGLWidget):
             (-1, -1, -1)
         )
 
+        square2_vertices = (
+            ( 3,  1, -1),
+            ( 3,  3, -1),
+            ( 1,  3, -1),
+            ( 1,  1, -1)
+        )
+
+
         square_edges = edges = (
             (0,1),
             (0,3),
@@ -114,6 +146,7 @@ class MapWidget(QtOpenGL.QGLWidget):
         )
 
         self.box1 = self.makeBox(square_vertices, square_edges)
+        self.box2 = self.makeBox(square2_vertices, square_edges)
 
     def resizeGL(self, width, height):
         gl.glViewport(0, 0, width, height)
@@ -167,7 +200,8 @@ class MapWidget(QtOpenGL.QGLWidget):
         self.zOff = 0
 
         if not self.boxinit:
-            self.drawBox(self.box1, 0.0, 0.0, 0.0)
+            self.drawBox(self.box1)
+            self.drawBox(self.box2)
 
     def xTranslation(self):
         return self.xOff
@@ -197,7 +231,7 @@ class MapWidget(QtOpenGL.QGLWidget):
         
         return list
 
-    def drawBox(self, box, dx, dy, dz):
+    def drawBox(self, box):
         gl.glPushMatrix()
         gl.glCallList(box)
         gl.glPopMatrix()
